@@ -4,13 +4,10 @@ namespace usd.Weapons.Projectiles
 {
     public class LinearProjectile : MonoBehaviour
     {
+        [HideInInspector]
         public float speed = 1f;
-        
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
+        [HideInInspector]
+        public float damage;
 
         // Update is called once per frame
         void Update()

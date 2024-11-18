@@ -1,4 +1,5 @@
 using UnityEngine;
+using usd.Weapons.Projectiles;
 
 namespace usd.Weapons
 {
@@ -8,10 +9,11 @@ namespace usd.Weapons
         
         public override void Shoot()
         {
-            float angleOffset = shootRadius / (numberOfProjectile + 1f);
+            int projCount = upgrades[_currentLevel].weaponProjectiles;
+            float angleOffset = shootRadius / (projCount + 1f);
             float startAngle = -shootRadius / 2f;
 
-            for (int i = 0; i < numberOfProjectile; i++)
+            for (int i = 0; i < projCount; i++)
             {
                 // Calculate the angle for each projectile in the fan (around the Z-axis in 2D)
                 float angle = startAngle + angleOffset * (i + 1);
@@ -20,7 +22,10 @@ namespace usd.Weapons
                 Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
 
                 // Instantiate the projectile with calculated position and rotation
-                Instantiate(projectilePrefab, transform.position, rotation, transform);
+                var projObj = Instantiate(projectilePrefab, transform.position, transform.rotation * rotation);
+                var proj = projObj.GetComponent<LinearProjectile>();
+                proj.damage = upgrades[_currentLevel].projectileDamage;
+                proj.speed = upgrades[_currentLevel].projectileSpeed;
             }
         }
     }

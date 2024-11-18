@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3413903955542511132
 Transform:
   m_ObjectHideFlags: 0
@@ -48,6 +48,15 @@ MonoBehaviour:
   damage: 1
   projectileSpeed: 1
   projectileCooldown: 1
+  projectileDuration: 0
   projectilePrefab: {fileID: 5681443658355303464, guid: db1379ff2141c0d488b1d2a11c1ca2e8,
     type: 3}
+  upgrades:
+  - {fileID: 11400000, guid: 38826903fc00996439d53b2457e87234, type: 2}
+  - {fileID: 11400000, guid: 34ebb266df36e004db6dbe7b5ecc0a42, type: 2}
+  - {fileID: 11400000, guid: 5254f75ce564207428b6b99a76bee494, type: 2}
+  - {fileID: 11400000, guid: 1aa78aabafc96ca439e418ff92dd018f, type: 2}
+  - {fileID: 11400000, guid: d53578332d3d32d47949fbbe02e33643, type: 2}
+  - {fileID: 11400000, guid: 5ca9b2b755ebd4846b0ad7a2000aca53, type: 2}
+  _currentLevel: 0
   shootRadius: 60
