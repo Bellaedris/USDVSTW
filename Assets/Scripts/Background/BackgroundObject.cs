@@ -11,14 +11,14 @@ namespace usd
         private Vector3 _direction;
         private float _speed;
         
-        private BoxCollider2D _bounds;
+        private BoxCollider _bounds;
         
         void Awake()
         {
             _speed = Random.Range(0f, maxSpeed);
             Vector2 dir = RandomUtils.RandomVectorInRange(-1f, 1f);
             _direction = new Vector3(dir.x, dir.y);
-            _bounds = GetComponentInParent<BoxCollider2D>();
+            _bounds = GetComponentInParent<BoxCollider>();
         }
 
         // Update is called once per frame
@@ -26,7 +26,7 @@ namespace usd
         {
             transform.Translate(Time.deltaTime * _speed * _direction);
             
-            if (!_bounds.OverlapPoint(new Vector2(transform.position.x, transform.position.y)))
+            if (!_bounds.bounds.Contains(transform.position))
                 Destroy(gameObject);
         }
     }

@@ -1,23 +1,30 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using usd.Weapons;
+using Random = UnityEngine.Random;
 
 namespace usd
 {
     public class PlayerController : MonoBehaviour
     {
         public float speed = 1f;
-        
-        private List<Weapon> _weapons;
+
+        private Weapon _currentWeapon;
+        private Weapon[] _weapons;
         private Vector2 _playerLimits;
+        private Camera _mainCamera;
         
         // Start is called before the first frame update
         void Start()
         {
-            _weapons = new List<Weapon>(transform.GetComponentsInChildren<Weapon>());
+            _mainCamera = Camera.main;
+            _weapons = transform.GetComponentsInChildren<Weapon>(true);
+            _currentWeapon = _weapons[Random.Range(0, _weapons.Length)];
+            _currentWeapon.gameObject.SetActive(true);
 
-            float sizeY = Camera.main.orthographicSize;
-            float sizeX = sizeY * Camera.main.aspect;
+            float sizeY = _mainCamera.orthographicSize;
+            float sizeX = sizeY * _mainCamera.aspect;
             _playerLimits = new Vector2(sizeX, sizeY);
         }
 
@@ -25,9 +32,7 @@ namespace usd
         void Update()
         {
             // follow the mouse position
-            Vector3 mousePos = Input.mousePosition;
-            mousePos.z = -Camera.main.transform.position.z;
-            Vector3 lookDirection = Quaternion.Euler(0, 0, 90) * (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+            Vector3 lookDirection = Quaternion.Euler(0, 0, 90) * (_mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position);
 
             transform.rotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: lookDirection);
             
@@ -38,6 +43,22 @@ namespace usd
             Vector3 newPos = transform.position;
             newPos.x = Mathf.Clamp(transform.position.x, -_playerLimits.x, _playerLimits.x);
             newPos.y = Mathf.Clamp(transform.position.y, -_playerLimits.x, _playerLimits.y);
+            
+            transform.position = newPos;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.CompareTag("Upgrade"))
+            {
+                _currentWeapon.LevelUp();
+                var upgrade = other.GetComponent<Upgrade>();
+                _currentWeapon.gameObject.SetActive(false);
+                _currentWeapon = _weapons[upgrade.weaponID - 1];
+                _currentWeapon.gameObject.SetActive(true);
+                
+                Destroy(other.gameObject);
+            }
         }
     }
 }

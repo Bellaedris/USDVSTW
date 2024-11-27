@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34236fa135a13cb47bcf70e8537f7415, type: 3}
   m_Name: BlackHole 2
   m_EditorClassIdentifier: 
-  weaponProjectiles: 0
-  projectileSpeed: 0
-  projectileRange: 0
-  projectileDuration: 0
-  projectileDamage: 0
-  fireRate: 0
+  weaponProjectiles: 3
+  projectileSpeed: 90
+  projectileRange: 2
+  projectileDuration: 5
+  projectileDamage: 1
+  fireRate: 0.1
