@@ -5,15 +5,9 @@ namespace usd.Weapons
 {
     public abstract class Weapon : MonoBehaviour
     {
-        public int numberOfProjectile;
-        public float damage;
-        public float projectileSpeed;
-        public float projectileCooldown;
-        public float projectileDuration;
+        public int weaponID;
         public GameObject projectilePrefab;
-
         public WeaponLevel[] upgrades;
-
         public int _currentLevel;
         
         void Start()
@@ -23,7 +17,7 @@ namespace usd.Weapons
         
         public abstract void Shoot();
 
-        private IEnumerator ShootOnCooldown()
+        protected IEnumerator ShootOnCooldown()
         {
             yield return new WaitForSeconds(1f / upgrades[_currentLevel].fireRate);
             while (true)
@@ -31,6 +25,11 @@ namespace usd.Weapons
                 Shoot();
                 yield return new WaitForSeconds(1f / upgrades[_currentLevel].fireRate);
             }
+        }
+
+        public void LevelUp()
+        {
+            _currentLevel++;
         }
     }
 }

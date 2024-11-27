@@ -18,7 +18,7 @@ namespace usd.Utils
         /*
          * Generate a random powition on the border of a rectangle
          */
-        public static Vector2 RandomInRectangleBorder(ref BoxCollider2D collider)
+        public static Vector3 RandomInRectangleBorder(ref BoxCollider collider)
         {
             int side = UnityEngine.Random.Range(0, 4);
             float minX = collider.bounds.min.x;
