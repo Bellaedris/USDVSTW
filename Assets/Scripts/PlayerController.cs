@@ -51,11 +51,12 @@ namespace usd
         {
             if(other.CompareTag("Upgrade"))
             {
-                _currentWeapon.LevelUp();
                 var upgrade = other.GetComponent<Upgrade>();
                 _currentWeapon.gameObject.SetActive(false);
                 _currentWeapon = _weapons[upgrade.weaponID - 1];
                 _currentWeapon.gameObject.SetActive(true);
+                _currentWeapon.LevelUp();
+                _currentWeapon.Shoot();
                 
                 Destroy(other.gameObject);
             }
