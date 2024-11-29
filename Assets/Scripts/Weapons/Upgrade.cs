@@ -3,19 +3,9 @@ using UnityEngine;
 
 namespace usd.Weapons
 {
+    [RequireComponent(typeof(BoxCollider))]
     public class Upgrade : MonoBehaviour
     {
         public int weaponID; 
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
     }
 }

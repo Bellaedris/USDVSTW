@@ -9,7 +9,6 @@ namespace usd.Background
         public int maxNumberOfBackgroundObjects = 2;
         public float minScale = 0.5f;
         public float maxScale = 5f;
-        public GameObject cam;
         
         private BoxCollider _boxCollider;
         private Vector2 _boxCenter;
