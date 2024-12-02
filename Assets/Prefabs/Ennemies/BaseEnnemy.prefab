@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5506235090481992822}
   - component: {fileID: 389182541948035963}
   - component: {fileID: 2410393780421385187}
-  - component: {fileID: 6027895429779688889}
+  - component: {fileID: 2230645044392448912}
   m_Layer: 0
   m_Name: BaseEnnemy
   m_TagString: Untagged
@@ -108,7 +108,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6027895429779688889
+--- !u!114 &2230645044392448912
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,19 +117,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 5896885490076359158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fece65e078bd9e40a36bc2bf710c0e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b5c46fd20b94a34ba6b529a2f048285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
   limits:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
-  movementSpeed: 10
+    m_Extent: {x: 20, y: 20, z: 20}
+  movementSpeed: 5
   projectileSpeed: 10
   projectileDamage: 20
   fireRate: 0.5
   fireLineSize: 3
-  fireProjectilesCount: 4
+  fireProjectilesCount: 5
   projectilePrefab: {fileID: 5681443658355303464, guid: 02df80fd5d5471d43990032741849a6f,
     type: 3}
   scoreValue: 100
