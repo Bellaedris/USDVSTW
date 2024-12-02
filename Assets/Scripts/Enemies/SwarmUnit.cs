@@ -47,6 +47,8 @@ namespace usd.Enemies
             
             // Move towards player
             Move();
+            // Look at player
+            RotateEntityTowardsPlayer(180.0f, 90.0f);
             
             // // Shoot if possible
             if (limits.Contains(transform.position) && CanShoot())
