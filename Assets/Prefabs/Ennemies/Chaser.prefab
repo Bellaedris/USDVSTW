@@ -8,6 +8,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 389182541948035963, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cfcfd7911c3d5fd4eab8e9ea8212d971, type: 2}
     - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
         type: 3}
       propertyPath: fireLineSize
@@ -17,6 +22,26 @@ PrefabInstance:
         type: 3}
       propertyPath: fireProjectilesCount
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410393780421385187, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787815814775784160, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787815814775784160, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787815814775784160, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3787815814775784160, guid: 608fbf73fabeb1142b4968b6db06af27,
         type: 3}
@@ -68,12 +93,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3787815814775784160, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506235090481992822, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2838047407261934760, guid: 0f030fc6f16d5e240b4bc1e1de9845c7,
+        type: 3}
     - target: {fileID: 5896885490076359158, guid: 608fbf73fabeb1142b4968b6db06af27,
         type: 3}
       propertyPath: m_Name
       value: Chaser
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2410393780421385187, guid: 608fbf73fabeb1142b4968b6db06af27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
