@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace usd
+namespace usd.Enemies
 {
     public class Spawner : MonoBehaviour
     {

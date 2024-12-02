@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace usd.Weapons.Projectiles
+namespace usd.Enemies.Projectiles
 {
     public class NmyLinearProjectile : MonoBehaviour
     {
