@@ -28,7 +28,7 @@ namespace usd.Weapons
         {
             while (true)
             {
-                Debug.Log("WEE");
+                // Debug.Log("WEE");
                 Shoot();
                 yield return new WaitForSeconds(1f / upgrades[_currentLevel].fireRate);
             }

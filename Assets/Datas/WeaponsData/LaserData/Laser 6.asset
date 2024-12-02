@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Laser 6
   m_EditorClassIdentifier: 
   weaponProjectiles: 3
-  projectileSpeed: 10
+  projectileSpeed: 23
   projectileRange: 1
   projectileDuration: 1
   projectileDamage: 140
-  fireRate: 2
+  fireRate: 6

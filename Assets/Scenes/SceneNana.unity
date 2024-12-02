@@ -370,6 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  invulnerabilityLength: 3
 --- !u!65 &261368504
 BoxCollider:
   m_ObjectHideFlags: 0

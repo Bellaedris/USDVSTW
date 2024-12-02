@@ -56,9 +56,9 @@ namespace usd.Enemies.Projectiles
             if (other.CompareTag("Player"))
             {
                 //TODO trigger ally hit animation
-                Debug.Log("TOUCHEEEEE");
+                // Debug.Log("TOUCHEEEEE");
                 PlayerController pController = other.GetComponent<PlayerController>();
-                pController._DowngradeWeapons();
+                pController.RegisterHit();
                 Destroy(gameObject);
             }
         }

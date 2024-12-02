@@ -77,7 +77,8 @@ namespace usd.Enemies
             if (health <= 0)
             {
                 Die();
-                // TODO +=scoreValue and animation
+                // TODO and animation
+                player.GetComponent<PlayerController>()._addScore(scoreValue);
             }
         }
 

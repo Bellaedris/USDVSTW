@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using usd.Weapons;
@@ -9,12 +10,27 @@ namespace usd
     public class PlayerController : MonoBehaviour
     {
         public float speed = 1f;
+        public float invulnerabilityLength;
 
         private Weapon _currentWeapon;
         private Weapon[] _weapons;
         private Vector2 _playerLimits;
         private Camera _mainCamera;
-
+        
+        private bool canBeHit;
+        private int score;
+        
+        public int _getScore()
+        {
+            return score;
+        }
+        
+        public void _addScore(int points)
+        {
+            score += points;
+            Debug.Log("Score : " + score);
+        }
+        
         public Weapon[] _getWeapons()
         {
             return _weapons;
@@ -30,8 +46,34 @@ namespace usd
             foreach (Weapon weapon in _weapons)
             {
                 weapon._Downgrade();
-                Debug.Log(weapon._currentLevel);
+                // Debug.Log(weapon._currentLevel);
             }
+        }
+
+        public void RegisterHit()
+        {
+            if (canBeHit)
+            {      
+                Debug.Log("Hit registered");
+                _DowngradeWeapons();
+                StartCoroutine(DoInvulnerability());
+            }
+        }
+        
+        IEnumerator DoInvulnerability()
+        {
+            canBeHit = false;
+            var hitTime = Time.time;
+            // Blink invulnerabilityLength seconds
+            Debug.Log(Time.time - hitTime);
+            while (Time.time - hitTime < invulnerabilityLength)
+            {
+                GetComponentInChildren<MeshRenderer>().enabled = false;
+                yield return new WaitForSeconds(0.1f);
+                GetComponentInChildren<MeshRenderer>().enabled = true;
+                yield return new WaitForSeconds(0.1f);
+            }
+            canBeHit = true;
         }
         
         // Start is called before the first frame update
@@ -45,6 +87,9 @@ namespace usd
             float sizeY = _mainCamera.orthographicSize;
             float sizeX = sizeY * _mainCamera.aspect;
             _playerLimits = new Vector2(sizeX, sizeY);
+            
+            canBeHit = true;
+            score = 0;
         }
 
         // Update is called once per frame
@@ -78,6 +123,10 @@ namespace usd
                 _currentWeapon.Shoot();
                 
                 Destroy(other.gameObject);
+            } 
+            else if (other.CompareTag("Nmy"))
+            {
+                RegisterHit();
             }
         }
     }

@@ -13,11 +13,12 @@ namespace usd.Enemies
         public GameObject rarestTankPrefab;
 
         [Header("Wave Settings")]
-        public float spawnInterval = 2f; // Time between spawns
+        public float spawnInterval = 3f; // Time between spawns
         public int initialEnemiesPerWave = 5; // Enemies in the first wave
         public float waveIncreaseFactor = 1.2f; // Multiplier for enemies per wave
-        public int maxEnemiesPerWave = 50; // Cap for max enemies in a wave
-
+        public int maxEnemiesPerWave = 25; // Cap for max enemies in a wave
+        public float delayBetweenWaves = 5.0f; // Delay between waves
+        
         [Header("Spawn Area")]
         public Vector2 spawnAreaMin; // Bottom-left corner
         public Vector2 spawnAreaMax; // Top-right corner
@@ -38,7 +39,7 @@ namespace usd.Enemies
                 currentWave++;
                 Debug.Log($"Starting Wave {currentWave}");
                 yield return StartCoroutine(SpawnEnemies());
-                yield return new WaitForSeconds(5f); // Delay between waves
+                yield return new WaitForSeconds(delayBetweenWaves); // Delay between waves
             }
         }
 

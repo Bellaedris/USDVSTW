@@ -17,7 +17,7 @@ namespace usd.Weapons.Projectiles
             if(!limits.Contains(transform.position))
                 Destroy(gameObject);
             transform.Translate(transform.right * (speed * Time.deltaTime), Space.World);
-            Debug.Log(gameObject.GetComponent<Collider>());
+            // Debug.Log(gameObject.GetComponent<Collider>());
         }
 
         private void OnTriggerEnter(Collider other)
