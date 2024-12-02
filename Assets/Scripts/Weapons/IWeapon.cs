@@ -26,9 +26,9 @@ namespace usd.Weapons
 
         protected IEnumerator ShootOnCooldown()
         {
-            yield return new WaitForSeconds(1f / upgrades[_currentLevel].fireRate);
             while (true)
             {
+                Debug.Log("WEE");
                 Shoot();
                 yield return new WaitForSeconds(1f / upgrades[_currentLevel].fireRate);
             }

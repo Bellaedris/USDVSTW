@@ -182,8 +182,14 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5681443658355303464, guid: 02df80fd5d5471d43990032741849a6f,
     type: 3}
   scoreValue: 1000
-  dropPrefab: []
-  dropRate: []
+  dropPrefab:
+  - {fileID: 6585106654912148602, guid: 6e37bc134b9592446b27ebf7f64fbcd2, type: 3}
+  - {fileID: 6585106654912148602, guid: 6ed46e7566fb4564983c9bca4843f93a, type: 3}
+  - {fileID: 6585106654912148602, guid: 72044a27c2e07a54888e414b4e67bd69, type: 3}
+  dropRate:
+  - 0.6
+  - 0.2
+  - 0.2
 --- !u!136 &4304937759642298761
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -20,9 +20,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
         type: 3}
+      propertyPath: dropRate.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
       propertyPath: fireProjectilesCount
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: dropPrefab.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: dropRate.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: dropRate.Array.data[1]
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: dropRate.Array.data[2]
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: dropPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 6585106654912148602, guid: 6e37bc134b9592446b27ebf7f64fbcd2,
+        type: 3}
+    - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: dropPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 6585106654912148602, guid: 72044a27c2e07a54888e414b4e67bd69,
+        type: 3}
+    - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: dropPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 6585106654912148602, guid: 6ed46e7566fb4564983c9bca4843f93a,
+        type: 3}
     - target: {fileID: 2410393780421385187, guid: 608fbf73fabeb1142b4968b6db06af27,
         type: 3}
       propertyPath: m_Enabled

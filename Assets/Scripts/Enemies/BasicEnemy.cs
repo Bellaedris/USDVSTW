@@ -85,9 +85,11 @@ namespace usd.Enemies
         {
             // Drop loot before death
             var hasDropped = false;
+            var dropRateCum = 0.0f;
             for (int i = 0; i < dropPrefab.Count; i++)
             {
-                if (Random.Range(0f, 1f) < dropRate[i] && !hasDropped)
+                dropRateCum += dropRate[i];
+                if (Random.Range(0f, 1f) < dropRateCum && !hasDropped)
                 {
                     Instantiate(dropPrefab[i], transform.position, Quaternion.identity);
                     hasDropped = true;

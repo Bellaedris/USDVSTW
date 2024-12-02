@@ -254,6 +254,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: player
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c652609375516634fba1ae2d01134293,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2287902867055187991, guid: c652609375516634fba1ae2d01134293,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -663,7 +668,6 @@ MonoBehaviour:
   maxNumberOfBackgroundObjects: 2
   minScale: 0.1
   maxScale: 2
-  cam: {fileID: 330585543}
 --- !u!65 &368801424
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -850,6 +854,7 @@ GameObject:
   - component: {fileID: 746076569}
   - component: {fileID: 746076568}
   - component: {fileID: 746076567}
+  - component: {fileID: 746076573}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Upgrade
@@ -983,6 +988,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &746076573
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746076566}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,6 +1084,7 @@ GameObject:
   - component: {fileID: 1477132762}
   - component: {fileID: 1477132761}
   - component: {fileID: 1477132760}
+  - component: {fileID: 1477132766}
   m_Layer: 0
   m_Name: Sphere (2)
   m_TagString: Upgrade
@@ -1191,6 +1218,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1477132766
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477132759}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1816832486 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5282322241698703950, guid: 744b06757b8897a4eb0d18e56fb6a2af,
@@ -1289,6 +1337,7 @@ GameObject:
   - component: {fileID: 2116289565}
   - component: {fileID: 2116289569}
   - component: {fileID: 2116289570}
+  - component: {fileID: 2116289571}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Upgrade
@@ -1422,6 +1471,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponID: 1
+--- !u!65 &2116289571
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116289564}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3304893963463323844
 PrefabInstance:
   m_ObjectHideFlags: 0
