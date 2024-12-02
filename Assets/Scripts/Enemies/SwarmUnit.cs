@@ -63,12 +63,12 @@ namespace usd.Enemies
         }
         
         // Override take damage and die methods
-        
         public new void TakeDamage(float damageTaken)
         {
             health -= damageTaken;
             if (health <= 0)
             {
+                // TODO animation
                 Destroy(gameObject);
                 spawnerReference.RemoveUnit(this);
             }

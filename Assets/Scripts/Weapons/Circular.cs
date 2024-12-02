@@ -30,26 +30,16 @@ namespace usd.Weapons
                                new Vector3(Mathf.Cos(angle) * projRange, Mathf.Sin(angle) * projRange, 0f);
 
                 // Instantiate the projectile with calculated position and rotation
-                GameObject projObj = Instantiate(projectilePrefab, position, projectilePrefab.transform.rotation,
-                    transform);
-                projObj.GetComponent<CircularProjectile>().damage = upgrades[_currentLevel].projectileDamage;
-                _projectiles.Add(projObj);
+                var proj = Instantiate(projectilePrefab, position, projectilePrefab.transform.rotation, transform);
+                proj.GetComponent<CircularProjectile>().lifetime = upgrades[_currentLevel].projectileDuration;
+                proj.GetComponent<CircularProjectile>().damage = upgrades[_currentLevel].projectileDamage;
+                _projectiles.Add(proj);
             }
-
-            StartCoroutine(ClearProjectiles());
         }
 
         private void Update()
         {
             transform.Rotate(Vector3.forward, Time.deltaTime * upgrades[_currentLevel].projectileSpeed);
-        }
-
-        private IEnumerator ClearProjectiles()
-        {
-            yield return new WaitForSeconds(upgrades[_currentLevel].projectileDuration);
-            foreach (var proj in _projectiles)
-                Destroy(proj.gameObject);
-            _projectiles.Clear();
         }
     }
 }

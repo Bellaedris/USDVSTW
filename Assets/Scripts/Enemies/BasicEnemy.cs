@@ -73,12 +73,19 @@ namespace usd.Enemies
         
         public void TakeDamage(float damageTaken)
         {
-            health -= damageTaken;
-            if (health <= 0)
+            if (gameObject.GetComponent<SwarmUnit>() != null)
             {
-                Die();
-                // TODO and animation
-                player.GetComponent<PlayerController>()._addScore(scoreValue);
+                gameObject.GetComponent<SwarmUnit>().TakeDamage(damageTaken);
+            }
+            else
+            {
+                health -= damageTaken;
+                if (health <= 0)
+                {
+                    Die();
+                    // TODO animation
+                    player.GetComponent<PlayerController>()._addScore(scoreValue);
+                }
             }
         }
 

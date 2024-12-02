@@ -48,6 +48,11 @@ namespace usd
                 weapon._Downgrade();
                 // Debug.Log(weapon._currentLevel);
             }
+            foreach (var weapon2 in _weapons)
+            {
+                Debug.Log("ID : " + weapon2.weaponID + "--Cur lvl : " + weapon2._currentLevel);
+            }
+            Debug.Log("---------------------------------------------------------------------");
         }
 
         public void RegisterHit()
@@ -59,8 +64,8 @@ namespace usd
                 {
                     //TODO Game Manager call game over
                 }
-                _DowngradeWeapons();
                 StartCoroutine(DoInvulnerability());
+                _DowngradeWeapons();
             }
         }
         
@@ -68,7 +73,7 @@ namespace usd
         {
             foreach (Weapon weapon in _weapons)
             {
-                if (weapon._currentLevel > 1)
+                if (weapon._currentLevel > 0)
                     return false;
             }
             return true;
@@ -129,14 +134,19 @@ namespace usd
         {
             if(other.CompareTag("Upgrade"))
             {
+                // change weapon to the one associated with the upgrade, then increment its level
                 var upgrade = other.GetComponent<Upgrade>();
+                Destroy(other.gameObject);
                 _currentWeapon.gameObject.SetActive(false);
                 _currentWeapon = _weapons[upgrade.weaponID - 1];
                 _currentWeapon.gameObject.SetActive(true);
                 _currentWeapon.LevelUp();
-                _currentWeapon.Shoot();
+                foreach (var weapon2 in _weapons)
+                {
+                    Debug.Log("ID : " + weapon2.weaponID + "--Cur lvl : " + weapon2._currentLevel);
+                }
+                Debug.Log("---------------------------------------------------------------------");
                 
-                Destroy(other.gameObject);
             } 
             else if (other.CompareTag("Nmy"))
             {

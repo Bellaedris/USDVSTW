@@ -11,7 +11,7 @@ namespace usd.Enemies
         
         private List<GameObject> swarmUnits;
         private Vector3 moveDirection;
-        
+        private bool hasDropped;
         public Vector3 GetMoveDirection()
         {
             return moveDirection;
@@ -83,6 +83,7 @@ namespace usd.Enemies
                 swarmUnit.GetComponent<SwarmUnit>().InitializeValues(this);
             }
             
+            
             CalculateRandomDirection();
             // Call CalculateRandomDirection every 6 seconds
             InvokeRepeating("CalculateRandomDirection", 0.0f, Random.Range(4.0f, 8.0f));
@@ -96,8 +97,9 @@ namespace usd.Enemies
                 CalculateRandomDirection();
             
             // Death of spawner if all units dead
-            if (numberOfUnits <= 0)
+            if (numberOfUnits <= 0 && !hasDropped)
             {
+                Debug.Log("Number of units: " + numberOfUnits);
                 SpawnerDieAndDrop();
             }
         }
@@ -105,15 +107,18 @@ namespace usd.Enemies
         void SpawnerDieAndDrop()
         {
             // Drop loot before death
-            var hasDropped = false;
+            var dropRateCum = 0.0f;
             for (int i = 0; i < dropPrefab.Count; i++)
             {
-                if (Random.Range(0f, 1f) < dropRate[i] && !hasDropped)
+                dropRateCum += dropRate[i];
+                if (Random.Range(0f, 1f) < dropRateCum && !hasDropped)
                 {
                     Instantiate(dropPrefab[i], transform.position, Quaternion.identity);
                     hasDropped = true;
                 }
             }
+            // TODO animation
+            player.GetComponent<PlayerController>()._addScore(scoreValue);
             Destroy(gameObject);
         }
     }
