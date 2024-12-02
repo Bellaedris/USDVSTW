@@ -55,9 +55,23 @@ namespace usd
             if (canBeHit)
             {      
                 Debug.Log("Hit registered");
+                if (CheckGameOver())
+                {
+                    //TODO Game Manager call game over
+                }
                 _DowngradeWeapons();
                 StartCoroutine(DoInvulnerability());
             }
+        }
+        
+        public bool CheckGameOver()
+        {
+            foreach (Weapon weapon in _weapons)
+            {
+                if (weapon._currentLevel > 1)
+                    return false;
+            }
+            return true;
         }
         
         IEnumerator DoInvulnerability()
