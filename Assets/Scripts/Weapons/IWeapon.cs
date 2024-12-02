@@ -5,6 +5,7 @@ namespace usd.Weapons
 {
     public abstract class Weapon : MonoBehaviour
     {
+        public string weaponName;
         public int weaponID;
         public GameObject projectilePrefab;
         public WeaponLevel[] upgrades;
@@ -29,6 +30,9 @@ namespace usd.Weapons
         public void LevelUp()
         {
             _currentLevel++;
+            // restart the coroutine to resume shooting
+            StartCoroutine(ShootOnCooldown());
+            Shoot();
         }
     }
 }

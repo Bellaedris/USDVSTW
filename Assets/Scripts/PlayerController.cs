@@ -57,7 +57,6 @@ namespace usd
                 _currentWeapon = _weapons[upgrade.weaponID - 1];
                 _currentWeapon.gameObject.SetActive(true);
                 _currentWeapon.LevelUp();
-                _currentWeapon.Shoot();
                 
                 Destroy(other.gameObject);
             }
