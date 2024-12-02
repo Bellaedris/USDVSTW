@@ -105,7 +105,7 @@ namespace usd.Enemies
 
         public override void Move()
         {
-            Debug.Log(transform.position);
+            // Debug.Log(transform.position);
             // Forward movement in the X-Y plane
             Vector3 forwardMovement = moveDirection * movementSpeed * Time.deltaTime;
 
@@ -119,7 +119,7 @@ namespace usd.Enemies
             newPosition.z = 0.0f;
             // Apply the new position
             transform.position = newPosition;
-            Debug.Log(transform.position);
+            // Debug.Log(transform.position);
         }
     }
 }
