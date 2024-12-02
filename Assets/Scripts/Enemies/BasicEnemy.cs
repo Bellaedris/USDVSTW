@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using usd.Weapons.Projectiles;
+using usd.Enemies.Projectiles;
 
-namespace usd.Ennemies
+namespace usd.Enemies
 {
     // Todo Abstract class
-    public abstract class BasicEnnemy : MonoBehaviour
+    public abstract class BasicEnemy : MonoBehaviour
     {
         [SerializeField] public int health;
         

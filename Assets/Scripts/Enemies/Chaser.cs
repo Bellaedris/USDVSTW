@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using usd.Weapons.Projectiles;
+using usd.Enemies.Projectiles;
 
-namespace usd.Ennemies
+namespace usd.Enemies
 {
-    public class Chaser : BasicEnnemy
+    public class Chaser : BasicEnemy
     {
         void Start()
         {
