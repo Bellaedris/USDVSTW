@@ -7,10 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BulletMat_Blue
-  m_Shader: {fileID: -6465566751694194690, guid: 6489d8214834f794098358ed94ceadac,
-    type: 3}
-  m_Parent: {fileID: 0}
+  m_Name: Lit Variant 1
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Parent: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -18,35 +17,20 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
-    m_Floats:
-    - _MaxOffset: 0.37
-    - _NoiseScale: 5.77
-    - _QueueControl: 0
-    - _QueueOffset: 0
+    m_Floats: []
     m_Colors:
-    - _Color: {r: 8.93438, g: 0, b: 0, a: 1}
-    - _NoiseSpeed: {r: 1, g: 1, b: 0, a: 0}
+    - _BaseColor: {r: 0.65, g: 0.05, b: 0.05, a: 1}
+    - _Color: {r: 0.65, g: 0.049999982, b: 0.049999982, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &4482279576415056300
+--- !u!114 &2162131497300992139
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

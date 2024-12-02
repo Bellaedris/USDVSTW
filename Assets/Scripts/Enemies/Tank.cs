@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UIElements;
 using usd.Enemies.Projectiles;
 
 namespace usd.Enemies
@@ -19,6 +20,8 @@ namespace usd.Enemies
             
             // Move towards player
             Move();
+            // Look at player
+            RotateEntityTowardsPlayer(180.0f, 90.0f);
             
             // // Shoot if possible
             if (limits.Contains(transform.position) && CanShoot())
@@ -84,7 +87,7 @@ namespace usd.Enemies
 
         public override void Move()
         {
-            transform.position = Vector3.MoveTowards(transform.position, playerPosition, movementSpeed * Time.deltaTime);            
+            transform.position = Vector3.MoveTowards(transform.position, playerPosition, movementSpeed * Time.deltaTime);
         }
     }
 }
