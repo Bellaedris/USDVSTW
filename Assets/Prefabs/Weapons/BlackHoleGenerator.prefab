@@ -44,18 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e6b27ca945d084ab226e6081b100d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfProjectile: 5
-  damage: 1
-  projectileSpeed: 30
-  projectileCooldown: 7
-  projectileDuration: 5
+  weaponID: 3
   projectilePrefab: {fileID: 8604453747958486177, guid: f6ccd7b619a603845bb2400f0ee73a16,
     type: 3}
   upgrades:
   - {fileID: 11400000, guid: aee0af0f04e4cc54a9f21aec049dc559, type: 2}
-  - {fileID: 11400000, guid: 3ad0f842912b51e4099b56ebf4ff8a4e, type: 2}
-  - {fileID: 11400000, guid: 593ea6114f5fb98488b122a2d5b19d83, type: 2}
-  - {fileID: 11400000, guid: bfb8ffea3043c8843857931d3cab7838, type: 2}
-  - {fileID: 11400000, guid: 220a404085c636f458e9802d56672d3e, type: 2}
-  - {fileID: 11400000, guid: 0fbb528275519f2448a3803caf5d9aa5, type: 2}
+  - {fileID: 11400000, guid: 6bb55783e1559da4bb5f7b47e965354e, type: 2}
+  - {fileID: 11400000, guid: 5f0aaa78f10654f4eb325c29d0a2183e, type: 2}
+  - {fileID: 11400000, guid: 7554dbe6f9768064a9a1ed4df1ca1de5, type: 2}
+  - {fileID: 11400000, guid: 52c89f7704b04b24cb1fd4b692e01063, type: 2}
+  - {fileID: 11400000, guid: 931e4458e173bc74aac948abcf6ff942, type: 2}
   _currentLevel: 0

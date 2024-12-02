@@ -44,11 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97fd5a24ea6842a4f85b5a56b7143f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfProjectile: 1
-  damage: 1
-  projectileSpeed: 1
-  projectileCooldown: 1
-  projectileDuration: 0
+  weaponID: 2
   projectilePrefab: {fileID: 5681443658355303464, guid: db1379ff2141c0d488b1d2a11c1ca2e8,
     type: 3}
   upgrades:
