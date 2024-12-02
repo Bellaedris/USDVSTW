@@ -198,15 +198,15 @@ MonoBehaviour:
     type: 3}
   rareSwarmPrefab: {fileID: 3837071723856993234, guid: fbba19e2fea323d499453620605f351f,
     type: 3}
-  rareFlyerPrefab: {fileID: 4389084859007027083, guid: 0997ea3d17cc5764f8173ab62ce92362,
+  rareFlyerPrefab: {fileID: 3207467360482016972, guid: 07f81e32cfc0b464998af30b49155259,
     type: 3}
   rarestTankPrefab: {fileID: 1169059682551800298, guid: 4ed03f381ce3e1049beaa9f57f5e916f,
     type: 3}
-  spawnInterval: 3
-  initialEnemiesPerWave: 5
-  waveIncreaseFactor: 1.2
-  maxEnemiesPerWave: 25
-  delayBetweenWaves: 5
+  spawnInterval: 7
+  initialEnemiesPerWave: 2
+  waveIncreaseFactor: 1.1
+  maxEnemiesPerWave: 20
+  delayBetweenWaves: 15
   spawnAreaMin: {x: -15, y: -15}
   spawnAreaMax: {x: 15, y: 15}
 --- !u!4 &57973740 stripped
