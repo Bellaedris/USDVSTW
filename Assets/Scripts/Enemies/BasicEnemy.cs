@@ -49,6 +49,18 @@ namespace usd.Enemies
         public virtual void Move() { }
         
         /////////////////////////////////////////// Common Taking Damage and Dying Methods ///////////////////////////////////////////
+        public void RotateEntityTowardsPlayer(float x_offset, float z_offset)
+        {
+            // Get the direction from this object to the player
+            Vector3 directionToPlayer = player.transform.position - transform.position;
+
+            // Calculate the angle in degrees (atan2 handles direction correctly)
+            float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
+
+            // Apply the rotation around the Z-axis
+            transform.rotation = Quaternion.Euler(x_offset, 0, -angle + z_offset);
+        }
+        
         public void TakeDamage(int damageTaken)
         {
             health -= damageTaken;
