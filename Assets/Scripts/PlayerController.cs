@@ -51,6 +51,7 @@ namespace usd
         {
             if(other.CompareTag("Upgrade"))
             {
+                // change weapon to the one associated with the upgrade, then increment its level
                 var upgrade = other.GetComponent<Upgrade>();
                 _currentWeapon.gameObject.SetActive(false);
                 _currentWeapon = _weapons[upgrade.weaponID - 1];
