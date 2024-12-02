@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlackHole
+  m_Name: LaserUI
   m_Shader: {fileID: -6465566751694194690, guid: 96410b74b7e2cca4e81c1e9c1b2faf5c,
     type: 3}
   m_Parent: {fileID: 0}
@@ -69,6 +69,6 @@ Material:
     - _stepValue: 0.47
     - _voronoiDensity: 5
     m_Colors:
-    - _Glow: {r: 2.3768508, g: 0, b: 2.9960783, a: 1}
+    - _Glow: {r: 0, g: 2.0050347, b: 3.0731995, a: 1}
     - _glowDirection: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

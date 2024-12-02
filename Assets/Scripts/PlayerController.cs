@@ -58,6 +58,7 @@ namespace usd
                 _currentWeapon.gameObject.SetActive(true);
                 _currentWeapon.LevelUp();
                 
+                GameManager.Instance.SwitchWeapon(upgrade.weaponID);
                 Destroy(other.gameObject);
             }
         }
