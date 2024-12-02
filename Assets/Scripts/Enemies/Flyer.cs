@@ -6,8 +6,8 @@ namespace usd.Enemies
     public class Flyer : BasicEnemy
     {
         // The height of the wave
-        public float amplitude = 200f; // Height of the sinusoidal wave
-        public float frequency = 2.0f; // Speed of the sinusoidal wave
+        public float amplitude; // Height of the sinusoidal wave
+        public float frequency; // Speed of the sinusoidal wave
         
         private Vector3 moveDirection; // Direction towards the target (player)
         private Vector3 perpendicularDirection; // Perpendicular axis for sinusoidal motion
@@ -18,11 +18,7 @@ namespace usd.Enemies
             player = GameObject.Find("player");
 
             // Calculate the direction towards the player in X-Y plane (ignore Z)
-           CalculateDirection();
-
-            // Calculate the perpendicular direction for sinusoidal oscillation
-            perpendicularDirection = Vector3.Cross(moveDirection, Vector3.forward).normalized;
-            
+            CalculateDirection();
         }
 
         void Update()
@@ -32,6 +28,8 @@ namespace usd.Enemies
 
             // Move towards player
             Move();
+            // Look at direction
+            RotateEntityTowardsDirection(180.0f, 90.0f, moveDirection);
 
             // // Shoot if possible
             if (limits.Contains(transform.position) && CanShoot())
@@ -50,6 +48,9 @@ namespace usd.Enemies
             Vector3 directionToPlayer = player.transform.position - transform.position;
             directionToPlayer.z = 0; // Ensure movement is constrained to X-Y plane
             moveDirection = directionToPlayer.normalized;
+            
+            // Calculate the perpendicular direction for sinusoidal oscillation
+            perpendicularDirection = Vector3.Cross(moveDirection, Vector3.forward).normalized;
         }
         // Specific Methods
         public override bool CanShoot()
@@ -104,6 +105,7 @@ namespace usd.Enemies
 
         public override void Move()
         {
+            Debug.Log(transform.position);
             // Forward movement in the X-Y plane
             Vector3 forwardMovement = moveDirection * movementSpeed * Time.deltaTime;
 
@@ -113,13 +115,11 @@ namespace usd.Enemies
 
             // Calculate the new position
             Vector3 newPosition = transform.position + forwardMovement + sinusoidalMovement;
-
             // Lock the Z-coordinate to 0
-            newPosition.z = 0;
-
+            newPosition.z = 0.0f;
             // Apply the new position
             transform.position = newPosition;
-
+            Debug.Log(transform.position);
         }
     }
 }
