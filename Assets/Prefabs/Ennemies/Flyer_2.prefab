@@ -11,12 +11,12 @@ PrefabInstance:
     - target: {fileID: -6695760680716414631, guid: 0997ea3d17cc5764f8173ab62ce92362,
         type: 3}
       propertyPath: amplitude
-      value: 0.07
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: -6695760680716414631, guid: 0997ea3d17cc5764f8173ab62ce92362,
         type: 3}
       propertyPath: frequency
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -6695760680716414631, guid: 0997ea3d17cc5764f8173ab62ce92362,
         type: 3}
@@ -26,12 +26,17 @@ PrefabInstance:
     - target: {fileID: -6695760680716414631, guid: 0997ea3d17cc5764f8173ab62ce92362,
         type: 3}
       propertyPath: movementSpeed
-      value: 6
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812924737173742217, guid: 0997ea3d17cc5764f8173ab62ce92362,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4389084859007027083, guid: 0997ea3d17cc5764f8173ab62ce92362,
         type: 3}
       propertyPath: m_Name
-      value: Flyer_2_to_do
+      value: Flyer_2
       objectReference: {fileID: 0}
     - target: {fileID: 6462064147328769181, guid: 0997ea3d17cc5764f8173ab62ce92362,
         type: 3}

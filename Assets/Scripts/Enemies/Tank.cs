@@ -87,7 +87,9 @@ namespace usd.Enemies
 
         public override void Move()
         {
-            transform.position = Vector3.MoveTowards(transform.position, playerPosition, movementSpeed * Time.deltaTime);
+            Vector3 newPosition = Vector3.MoveTowards(transform.position, playerPosition, movementSpeed * Time.deltaTime);
+            newPosition.z = 0.0f;
+            transform.position = newPosition;
         }
     }
 }

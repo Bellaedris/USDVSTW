@@ -48,7 +48,8 @@ namespace usd.Enemies
 
         public virtual void Move() { }
         
-        /////////////////////////////////////////// Common Taking Damage and Dying Methods ///////////////////////////////////////////
+        /////////////////////////////////////////// Common Rotating, Taking Damage and Dying Methods ///////////////////////////////////////////
+        
         public void RotateEntityTowardsPlayer(float x_offset, float z_offset)
         {
             // Get the direction from this object to the player
@@ -56,6 +57,15 @@ namespace usd.Enemies
 
             // Calculate the angle in degrees (atan2 handles direction correctly)
             float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
+
+            // Apply the rotation around the Z-axis
+            transform.rotation = Quaternion.Euler(x_offset, 0, -angle + z_offset);
+        }
+        
+        public void RotateEntityTowardsDirection(float x_offset, float z_offset, Vector3 direction)
+        {
+            // Calculate the angle in degrees (atan2 handles direction correctly)
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
             // Apply the rotation around the Z-axis
             transform.rotation = Quaternion.Euler(x_offset, 0, -angle + z_offset);

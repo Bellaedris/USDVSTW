@@ -8,15 +8,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 389182541948035963, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cfcfd7911c3d5fd4eab8e9ea8212d971, type: 2}
     - target: {fileID: 3787815814775784160, guid: 608fbf73fabeb1142b4968b6db06af27,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5289492
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787815814775784160, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3787815814775784160, guid: 608fbf73fabeb1142b4968b6db06af27,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.50400114
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3787815814775784160, guid: 608fbf73fabeb1142b4968b6db06af27,
         type: 3}
@@ -68,6 +78,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3787815814775784160, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506235090481992822, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2838047407261934760, guid: e82f743113b58d04588dba7f55f31244,
+        type: 3}
     - target: {fileID: 5896885490076359158, guid: 608fbf73fabeb1142b4968b6db06af27,
         type: 3}
       propertyPath: m_Name
@@ -75,6 +96,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27, type: 3}
+    - {fileID: 2410393780421385187, guid: 608fbf73fabeb1142b4968b6db06af27, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -82,6 +104,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -6695760680716414631}
+    - targetCorrespondingSourceObject: {fileID: 5896885490076359158, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3812924737173742217}
   m_SourcePrefab: {fileID: 100100000, guid: 608fbf73fabeb1142b4968b6db06af27, type: 3}
 --- !u!1 &4389084859007027083 stripped
 GameObject:
@@ -105,7 +131,7 @@ MonoBehaviour:
   limits:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 20, y: 20, z: 20}
-  movementSpeed: 5
+  movementSpeed: 6
   projectileSpeed: 10
   projectileDamage: 20
   fireRate: 0.5
@@ -116,5 +142,26 @@ MonoBehaviour:
   scoreValue: 200
   dropPrefab: []
   dropRate: []
-  amplitude: 0.05
+  amplitude: 0.2
   frequency: 3
+--- !u!65 &3812924737173742217
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4389084859007027083}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.038516503, y: 0.024643254, z: 0.0076226955}
+  m_Center: {x: 0, y: -0.011741385, z: 0}

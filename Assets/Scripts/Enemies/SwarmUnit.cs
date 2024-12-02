@@ -128,7 +128,9 @@ namespace usd.Enemies
         public override void Move()
         {
             // Move according to swarm direction
-            transform.position = transform.position + moveDirection * movementSpeed * Time.deltaTime;         
+            Vector3 newPosition = transform.position + moveDirection * movementSpeed * Time.deltaTime;
+            newPosition.z = 0.0f;
+            transform.position = newPosition;
         }
     }
 }
