@@ -1,4 +1,5 @@
 using UnityEngine;
+using usd.Enemies;
 
 namespace usd.Weapons.Projectiles
 {
@@ -16,6 +17,20 @@ namespace usd.Weapons.Projectiles
             if(!limits.Contains(transform.position))
                 Destroy(gameObject);
             transform.Translate(transform.right * (speed * Time.deltaTime), Space.World);
+            Debug.Log(gameObject.GetComponent<Collider>());
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {   
+            if (other.CompareTag("Nmy"))
+            {
+                other.GetComponent<BasicEnemy>().TakeDamage(damage);
+                Destroy(gameObject);
+            }
+            else if (other.CompareTag("Nmy_Projectile"))
+            {
+                Destroy(other.gameObject);
+            }
         }
     }
 }

@@ -52,7 +52,8 @@ namespace usd.Enemies
             // Give direction to swarm units
             foreach (var swarmUnit in swarmUnits)
             {
-                swarmUnit.GetComponent<SwarmUnit>().SetMoveDrection(moveDirection);
+                if (swarmUnit != null)
+                    swarmUnit.GetComponent<SwarmUnit>().SetMoveDrection(moveDirection);
             }
         }
         

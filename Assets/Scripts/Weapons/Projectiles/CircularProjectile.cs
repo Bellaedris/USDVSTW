@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using usd.Enemies;
 
-namespace usd
+namespace usd.Weapons.Projectiles
 {
     public class CircularProjectile : MonoBehaviour
     {
@@ -20,12 +20,10 @@ namespace usd
         {
             if (other.CompareTag("Nmy"))
             {
-                Debug.Log("TOTO");
                 other.GetComponent<BasicEnemy>().TakeDamage(damage);
             }
             else if (other.CompareTag("Nmy_Projectile"))
             {
-                Debug.Log("TATA");
                 Destroy(other.gameObject);
             }
         }

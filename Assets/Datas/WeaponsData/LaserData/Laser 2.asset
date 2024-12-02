@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Laser 2
   m_EditorClassIdentifier: 
   weaponProjectiles: 2
-  projectileSpeed: 10
+  projectileSpeed: 15
   projectileRange: 1
   projectileDuration: 1
-  projectileDamage: 1
-  fireRate: 1
+  projectileDamage: 75
+  fireRate: 2
