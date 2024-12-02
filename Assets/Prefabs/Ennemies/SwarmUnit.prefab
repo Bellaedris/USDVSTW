@@ -19,6 +19,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwarmUnit
       objectReference: {fileID: 0}
+    - target: {fileID: 3857313612333330447, guid: 62b2e2045050bc24d87e8bc2c684c02a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Nmy
+      objectReference: {fileID: 0}
     - target: {fileID: 5819523993410038553, guid: 62b2e2045050bc24d87e8bc2c684c02a,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -167,7 +172,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

@@ -9,7 +9,7 @@ namespace usd.Enemies
     // Todo Abstract class
     public abstract class BasicEnemy : MonoBehaviour
     {
-        [SerializeField] public int health;
+        [SerializeField] public float health;
         
         [SerializeField] public Bounds limits;
         [SerializeField] public float movementSpeed;
@@ -71,7 +71,7 @@ namespace usd.Enemies
             transform.rotation = Quaternion.Euler(x_offset, 0, -angle + z_offset);
         }
         
-        public void TakeDamage(int damageTaken)
+        public void TakeDamage(float damageTaken)
         {
             health -= damageTaken;
             if (health <= 0)

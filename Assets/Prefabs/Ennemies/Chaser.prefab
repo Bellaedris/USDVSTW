@@ -109,6 +109,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chaser
       objectReference: {fileID: 0}
+    - target: {fileID: 5896885490076359158, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: m_TagString
+      value: Nmy
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2410393780421385187, guid: 608fbf73fabeb1142b4968b6db06af27, type: 3}
     m_RemovedGameObjects: []
@@ -140,7 +145,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

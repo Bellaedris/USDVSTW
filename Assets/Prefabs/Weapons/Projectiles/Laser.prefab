@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2570483073099755436}
   - component: {fileID: 5922643922558421328}
+  - component: {fileID: 6738646000482261480}
   m_Layer: 0
   m_Name: Laser
-  m_TagString: Untagged
+  m_TagString: Projectile_Lin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,6 +51,27 @@ MonoBehaviour:
     m_Extent: {x: 20, y: 20, z: 20}
   speed: 5
   damage: 0
+--- !u!65 &6738646000482261480
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5356661346415297691}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2669917, y: 0.16756874, z: 0.095679045}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2778297400960088456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -112,6 +134,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Laser (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3807551316329078539, guid: 25e81cdf5d508704189f0527a9b61ed3,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3807551316329078539, guid: 25e81cdf5d508704189f0527a9b61ed3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3807551316329078539, guid: 25e81cdf5d508704189f0527a9b61ed3,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -8368515007219740021, guid: 25e81cdf5d508704189f0527a9b61ed3, type: 3}

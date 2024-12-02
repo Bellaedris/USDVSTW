@@ -29,7 +29,10 @@ namespace usd.Weapons
                                new Vector3(Mathf.Cos(angle) * projRange, Mathf.Sin(angle) * projRange, 0f);
 
                 // Instantiate the projectile with calculated position and rotation
-                _projectiles.Add(Instantiate(projectilePrefab, position, projectilePrefab.transform.rotation, transform));
+                GameObject projObj = Instantiate(projectilePrefab, position, projectilePrefab.transform.rotation,
+                    transform);
+                projObj.GetComponent<CircularProjectile>().damage = upgrades[_currentLevel].projectileDamage;
+                _projectiles.Add(projObj);
             }
 
             StartCoroutine(ClearProjectiles());
