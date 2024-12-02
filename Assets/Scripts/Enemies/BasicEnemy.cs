@@ -77,7 +77,7 @@ namespace usd.Enemies
             if (health <= 0)
             {
                 Die();
-                // TODO +=scoreValue
+                // TODO +=scoreValue and animation
             }
         }
 

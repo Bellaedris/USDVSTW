@@ -20,6 +20,7 @@ namespace usd.Weapons.Projectiles
         {
             if (other.CompareTag("Nmy"))
             {
+                //TODO trigger enemy hit animation
                 other.GetComponent<BasicEnemy>().TakeDamage(damage);
             }
             else if (other.CompareTag("Nmy_Projectile"))

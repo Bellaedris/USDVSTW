@@ -14,6 +14,13 @@ namespace usd.Weapons
         {
             StartCoroutine(ShootOnCooldown());
         }
+
+        public void _Downgrade()
+        {
+            if (_currentLevel > 1)
+                _currentLevel--;
+            
+        }
         
         public abstract void Shoot();
 

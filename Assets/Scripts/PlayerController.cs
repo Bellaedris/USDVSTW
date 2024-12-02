@@ -14,6 +14,25 @@ namespace usd
         private Weapon[] _weapons;
         private Vector2 _playerLimits;
         private Camera _mainCamera;
+
+        public Weapon[] _getWeapons()
+        {
+            return _weapons;
+        }
+        
+        public Weapon _getCurrentWeapon()
+        {
+            return _currentWeapon;
+        }
+        
+        public void _DowngradeWeapons()
+        {
+            foreach (Weapon weapon in _weapons)
+            {
+                weapon._Downgrade();
+                Debug.Log(weapon._currentLevel);
+            }
+        }
         
         // Start is called before the first frame update
         void Start()

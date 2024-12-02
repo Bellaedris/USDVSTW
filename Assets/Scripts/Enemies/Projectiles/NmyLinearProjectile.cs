@@ -50,5 +50,17 @@ namespace usd.Enemies.Projectiles
             // Move in the current direction
             transform.position += moveDirection * speed * Time.deltaTime;
         }
+        
+        private void OnTriggerEnter(Collider other)
+        {   
+            if (other.CompareTag("Player"))
+            {
+                //TODO trigger ally hit animation
+                Debug.Log("TOUCHEEEEE");
+                PlayerController pController = other.GetComponent<PlayerController>();
+                pController._DowngradeWeapons();
+                Destroy(gameObject);
+            }
+        }
     }
 }
