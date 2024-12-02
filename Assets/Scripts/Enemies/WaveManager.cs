@@ -36,6 +36,7 @@ namespace usd.Enemies
             while (true)
             {
                 currentWave++;
+                GameManager.Instance.SetWaveNumber(currentWave);
                 Debug.Log($"Starting Wave {currentWave}");
                 yield return StartCoroutine(SpawnEnemies());
                 yield return new WaitForSeconds(5f); // Delay between waves
