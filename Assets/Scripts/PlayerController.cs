@@ -102,6 +102,7 @@ namespace usd
             _weapons = transform.GetComponentsInChildren<Weapon>(true);
             _currentWeapon = _weapons[Random.Range(0, _weapons.Length)];
             _currentWeapon.gameObject.SetActive(true);
+            GameManager.Instance.SwitchWeapon(_currentWeapon.weaponID, _currentWeapon._currentLevel);
 
             float sizeY = _mainCamera.orthographicSize;
             float sizeX = sizeY * _mainCamera.aspect;
@@ -136,7 +137,6 @@ namespace usd
             {
                 // change weapon to the one associated with the upgrade, then increment its level
                 var upgrade = other.GetComponent<Upgrade>();
-                Destroy(other.gameObject);
                 _currentWeapon.gameObject.SetActive(false);
                 _currentWeapon = _weapons[upgrade.weaponID - 1];
                 _currentWeapon.gameObject.SetActive(true);
@@ -147,6 +147,8 @@ namespace usd
                 }
                 Debug.Log("---------------------------------------------------------------------");
                 
+                GameManager.Instance.SwitchWeapon(upgrade.weaponID, _currentWeapon._currentLevel);
+                Destroy(other.gameObject);
             } 
             else if (other.CompareTag("Nmy"))
             {
