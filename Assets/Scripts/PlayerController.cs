@@ -22,7 +22,7 @@ namespace usd
             _weapons = transform.GetComponentsInChildren<Weapon>(true);
             _currentWeapon = _weapons[Random.Range(0, _weapons.Length)];
             _currentWeapon.gameObject.SetActive(true);
-            GameManager.Instance.SwitchWeapon(_currentWeapon.weaponID, _currentWeapon._currentLevel);
+            UIManager.Instance.SwitchWeapon(_currentWeapon.weaponID, _currentWeapon._currentLevel);
 
             float sizeY = _mainCamera.orthographicSize;
             float sizeX = sizeY * _mainCamera.aspect;
@@ -40,6 +40,9 @@ namespace usd
             // move in the limits of the terrain
             Vector3 input = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
             transform.Translate(speed * Time.deltaTime * input, Space.World);
+            
+            if(Input.GetKeyDown(KeyCode.Escape))
+                UIManager.Instance.TogglePauseMenu();
             
             Vector3 newPos = transform.position;
             newPos.x = Mathf.Clamp(transform.position.x, -_playerLimits.x, _playerLimits.x);
@@ -59,7 +62,7 @@ namespace usd
                 _currentWeapon.gameObject.SetActive(true);
                 _currentWeapon.LevelUp();
                 
-                GameManager.Instance.SwitchWeapon(upgrade.weaponID, _currentWeapon._currentLevel);
+                UIManager.Instance.SwitchWeapon(upgrade.weaponID, _currentWeapon._currentLevel);
                 Destroy(other.gameObject);
             }
         }

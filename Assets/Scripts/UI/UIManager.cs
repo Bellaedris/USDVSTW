@@ -1,38 +1,100 @@
-using System;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace usd.UI
+namespace usd
 {
     public class UIManager : MonoBehaviour
     {
+        public TMP_Text timerText;
+        public TMP_Text waveText;
+        public TMP_Text scoreText;
+
+        public RawImage laserLevel;
+        public RawImage gatlingLevel;
+        public RawImage blackHoleLevel;
+        
+        public Slider laserLevelSlider;
+        public Slider gatlingLevelSlider;
+        public Slider blackHoleLevelSlider;
+
+        public GameObject pauseUI;
+        
         private static UIManager _instance;
         
-        public UIManager Instance => _instance;
+        private bool _isPaused;
+        private float _timeScale;
         
+        public static UIManager Instance => _instance;
+
         private void Awake()
         {
             if(_instance == null)
-            {
                 _instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else 
+            else
                 Destroy(gameObject);
+
+            _timeScale = Time.timeScale;
         }
 
-        public static void LoadGameScene()
+        private void OnGUI()
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+            //display the game time
+            var time = Time.timeSinceLevelLoad;
+            float seconds = time % 60;
+            float minutes = Mathf.Floor(time / 60);
+            timerText.text = $"{minutes:00}:{seconds:00}";
         }
 
-        public static void LoadMainMenuScene()
+        public void SetWaveNumber(int wave)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            waveText.text = $"Wave {wave}";
         }
 
-        public static void QuitGame()
+        public void SwitchWeapon(int weaponID, int weaponLevel)
         {
-            Application.Quit();
+            // update the UI to fill the upgrade boxes
+            var sliderValue = (weaponLevel + 1) / 6f;
+            switch (weaponID)
+            {
+                case 1:
+                    laserLevelSlider.value = sliderValue;
+                    laserLevel.color = Color.white;
+                    gatlingLevel.color = Color.grey;
+                    blackHoleLevel.color = Color.grey;
+                    break;
+                case 2:
+                    gatlingLevelSlider.value = sliderValue;
+                    laserLevel.color = Color.grey;
+                    gatlingLevel.color = Color.white;
+                    blackHoleLevel.color = Color.grey;
+                    break;
+                case 3:
+                    blackHoleLevelSlider.value = sliderValue;
+                    laserLevel.color = Color.grey;
+                    gatlingLevel.color = Color.grey;
+                    blackHoleLevel.color = Color.white;
+                    break;
+            }
+        }
+
+        public void displayScore(int score)
+        {
+            scoreText.text = $"Score: {score}";
+        }
+
+        public void TogglePauseMenu()
+        {
+            // we set the time scale to zero to fake pause the game
+            if (!_isPaused)
+                Time.timeScale = 0;
+            else
+                Time.timeScale = _timeScale;
+            _isPaused = !_isPaused;
+            pauseUI.SetActive(!pauseUI.activeSelf);
         }
     }
 }

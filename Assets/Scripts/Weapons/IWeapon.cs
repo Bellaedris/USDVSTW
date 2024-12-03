@@ -5,14 +5,17 @@ namespace usd.Weapons
 {
     public abstract class Weapon : MonoBehaviour
     {
-        public string weaponName;
+        public AudioClip sound;
         public int weaponID;
         public GameObject projectilePrefab;
         public WeaponLevel[] upgrades;
         public int _currentLevel;
         
+        private AudioManager _audioManager;
+        
         void Start()
         {
+            _audioManager = AudioManager.Instance;
             StartCoroutine(ShootOnCooldown());
         }
         
@@ -23,6 +26,7 @@ namespace usd.Weapons
             while (true)
             {
                 Shoot();
+                _audioManager.playPlayerSound(sound);
                 yield return new WaitForSeconds(1f / upgrades[_currentLevel].fireRate);
             }
         }
@@ -30,9 +34,10 @@ namespace usd.Weapons
         public void LevelUp()
         {
             _currentLevel++;
+            if(_audioManager == null)
+                _audioManager = AudioManager.Instance;
             // restart the coroutine to resume shooting
             StartCoroutine(ShootOnCooldown());
-            Shoot();
         }
     }
 }
