@@ -22,6 +22,7 @@ namespace usd
             _weapons = transform.GetComponentsInChildren<Weapon>(true);
             _currentWeapon = _weapons[Random.Range(0, _weapons.Length)];
             _currentWeapon.gameObject.SetActive(true);
+            GameManager.Instance.SwitchWeapon(_currentWeapon.weaponID, _currentWeapon._currentLevel);
 
             float sizeY = _mainCamera.orthographicSize;
             float sizeX = sizeY * _mainCamera.aspect;
@@ -58,7 +59,7 @@ namespace usd
                 _currentWeapon.gameObject.SetActive(true);
                 _currentWeapon.LevelUp();
                 
-                GameManager.Instance.SwitchWeapon(upgrade.weaponID);
+                GameManager.Instance.SwitchWeapon(upgrade.weaponID, _currentWeapon._currentLevel);
                 Destroy(other.gameObject);
             }
         }
