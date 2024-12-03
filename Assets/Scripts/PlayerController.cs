@@ -48,11 +48,13 @@ namespace usd
                 weapon._Downgrade();
                 // Debug.Log(weapon._currentLevel);
             }
-            foreach (var weapon2 in _weapons)
-            {
-                Debug.Log("ID : " + weapon2.weaponID + "--Cur lvl : " + weapon2._currentLevel);
-            }
-            Debug.Log("---------------------------------------------------------------------");
+            
+            GameManager.Instance.UpdateLevelsOnUI(_weapons[0]._currentLevel, _weapons[1]._currentLevel, _weapons[2]._currentLevel);
+            // foreach (var weapon2 in _weapons)
+            // {
+            //     Debug.Log("ID : " + weapon2.weaponID + "--Cur lvl : " + weapon2._currentLevel);
+            // }
+            // Debug.Log("---------------------------------------------------------------------");
         }
 
         public void RegisterHit()
@@ -63,9 +65,13 @@ namespace usd
                 if (CheckGameOver())
                 {
                     //TODO Game Manager call game over
+                    Debug.Log("Game Over");
                 }
-                StartCoroutine(DoInvulnerability());
-                _DowngradeWeapons();
+                else
+                {
+                    StartCoroutine(DoInvulnerability());
+                    _DowngradeWeapons();
+                }
             }
         }
         
@@ -84,7 +90,6 @@ namespace usd
             canBeHit = false;
             var hitTime = Time.time;
             // Blink invulnerabilityLength seconds
-            Debug.Log(Time.time - hitTime);
             while (Time.time - hitTime < invulnerabilityLength)
             {
                 GetComponentInChildren<MeshRenderer>().enabled = false;
@@ -141,17 +146,24 @@ namespace usd
                 _currentWeapon = _weapons[upgrade.weaponID - 1];
                 _currentWeapon.gameObject.SetActive(true);
                 _currentWeapon.LevelUp();
-                foreach (var weapon2 in _weapons)
-                {
-                    Debug.Log("ID : " + weapon2.weaponID + "--Cur lvl : " + weapon2._currentLevel);
-                }
-                Debug.Log("---------------------------------------------------------------------");
+                // foreach (var weapon2 in _weapons)
+                // {
+                //     Debug.Log("ID : " + weapon2.weaponID + "--Cur lvl : " + weapon2._currentLevel);
+                // }
+                // Debug.Log("---------------------------------------------------------------------");
                 
                 GameManager.Instance.SwitchWeapon(upgrade.weaponID, _currentWeapon._currentLevel);
                 Destroy(other.gameObject);
             } 
+            else if (other.CompareTag("Nmy_Projectile"))
+            {
+                //TODO trigger ally hit animation
+                RegisterHit();
+                Destroy(other.gameObject);
+            }
             else if (other.CompareTag("Nmy"))
             {
+                //TODO trigger ally hit animation
                 RegisterHit();
             }
         }

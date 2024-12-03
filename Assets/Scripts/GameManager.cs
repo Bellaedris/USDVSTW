@@ -71,6 +71,13 @@ namespace usd
                     break;
             }
         }
+        
+        public void UpdateLevelsOnUI(int laserLevel, int gatlingLevel, int blackHoleLevel)
+        {
+            laserLevelSlider.value = (laserLevel + 1) / 6f;
+            gatlingLevelSlider.value = (gatlingLevel + 1) / 6f;
+            blackHoleLevelSlider.value = (blackHoleLevel + 1) / 6f;
+        }
 
         public void displayScore(int score)
         {

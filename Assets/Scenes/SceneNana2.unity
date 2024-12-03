@@ -314,7 +314,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c652609375516634fba1ae2d01134293,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c652609375516634fba1ae2d01134293,
         type: 3}
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  invulnerabilityLength: 0
+  invulnerabilityLength: 3
 --- !u!65 &261368504
 BoxCollider:
   m_ObjectHideFlags: 0

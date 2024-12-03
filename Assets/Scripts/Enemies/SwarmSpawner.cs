@@ -99,7 +99,6 @@ namespace usd.Enemies
             // Death of spawner if all units dead
             if (numberOfUnits <= 0 && !hasDropped)
             {
-                Debug.Log("Number of units: " + numberOfUnits);
                 SpawnerDieAndDrop();
             }
         }

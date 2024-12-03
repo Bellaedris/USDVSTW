@@ -28,10 +28,10 @@ namespace usd.Enemies
             {
                 Shoot();
             }
-            else if (!limits.Contains(transform.position))
-            {
-                Destroy(gameObject);
-            }
+            // else if (!limits.Contains(transform.position))
+            // {
+            //     Destroy(gameObject);
+            // }
         }
         
         // Specific Methods
@@ -78,7 +78,6 @@ namespace usd.Enemies
             else
             { 
                 GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-                // Todo change sript to linear projectile enemy
                 projectile.GetComponent<NmyLinearProjectile>().speed = projectileSpeed;
                 projectile.GetComponent<NmyLinearProjectile>().damage = projectileDamage;
                 projectile.GetComponent<NmyLinearProjectile>().target = playerPosition;

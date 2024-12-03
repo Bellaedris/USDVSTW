@@ -37,10 +37,10 @@ namespace usd.Enemies
             _mainCamera = Camera.main;
             float sizeY = _mainCamera.orthographicSize;
             float sizeX = sizeY * _mainCamera.aspect;
-            limits = new Bounds(_mainCamera.transform.position, new Vector3(sizeX * 2, sizeY * 2, 0) + new Vector3(1.0f, 1.0f, 0));
+            limits = new Bounds(_mainCamera.transform.position, new Vector3(sizeX * 2, sizeY * 2, 0) + new Vector3(4.0f, 4.0f, 0));
             sizeY = _mainCamera.orthographicSize;
             sizeX = sizeY * _mainCamera.aspect;
-            shootLimits = new Vector2(sizeX, sizeY);
+            shootLimits = new Vector2(sizeX + 1.0f, sizeY + 1.0f);
         }
 
         // Update is called once per frame

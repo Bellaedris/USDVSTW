@@ -97,7 +97,6 @@ namespace usd.Enemies
             else
             {
                 GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-                // Todo change sript to linear projectile enemy
                 projectile.GetComponent<NmyLinearProjectile>().speed = projectileSpeed;
                 projectile.GetComponent<NmyLinearProjectile>().damage = projectileDamage;
                 projectile.GetComponent<NmyLinearProjectile>().target = playerPosition;

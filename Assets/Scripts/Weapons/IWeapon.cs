@@ -65,7 +65,7 @@ namespace usd.Weapons
             _currentLevel = _currentLevel > 5 ? 5 : _currentLevel;
             // restart the coroutine to resume shooting
             StartCoroutine(ShootOnCooldown());
-            Shoot();
+            // Shoot();
         }
     }
 }
