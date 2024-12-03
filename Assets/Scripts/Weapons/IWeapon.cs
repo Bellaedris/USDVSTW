@@ -10,9 +10,32 @@ namespace usd.Weapons
         public GameObject projectilePrefab;
         public WeaponLevel[] upgrades;
         public int _currentLevel;
+
+        private Vector2 _playerLimits;
+        private Camera _mainCamera;
+        
+        private bool isEnemyOnScreen()
+        {
+            // get all enemies and see if they are into the camera view
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Nmy");
+            
+            foreach (GameObject enemy in enemies)
+            {
+                Vector3 enemyPos = enemy.transform.position;
+                if (enemyPos.x < _playerLimits.x - 0.5f && enemyPos.x > -_playerLimits.x + 0.5f && enemyPos.y < _playerLimits.y - 0.5f && enemyPos.y > -_playerLimits.y + 0.5f)
+                    return true;
+            }
+
+            return false;
+        }
         
         void Start()
         {
+            _mainCamera = Camera.main;
+            float sizeY = _mainCamera.orthographicSize;
+            float sizeX = sizeY * _mainCamera.aspect;
+            _playerLimits = new Vector2(sizeX, sizeY);
+            
             StartCoroutine(ShootOnCooldown());
         }
 
@@ -30,7 +53,8 @@ namespace usd.Weapons
             while (true)
             {
                 // Debug.Log("WEE");
-                Shoot();
+                if (isEnemyOnScreen()) 
+                    Shoot();
                 yield return new WaitForSeconds(1f / upgrades[_currentLevel].fireRate);
             }
         }

@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  movementSpeed: 4
+  movementSpeed: 5
   projectileSpeed: 10
   projectileDamage: 20
   fireRate: 0.5
@@ -152,7 +152,7 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 15, y: 15, z: 15}
   shootLimits: {x: 0, y: 0}
-  amplitude: 0.1
+  amplitude: 0.08
   frequency: 3
 --- !u!65 &3812924737173742217
 BoxCollider:

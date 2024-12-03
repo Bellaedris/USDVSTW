@@ -126,7 +126,7 @@ namespace usd
             
             Vector3 newPos = transform.position;
             newPos.x = Mathf.Clamp(transform.position.x, -_playerLimits.x, _playerLimits.x);
-            newPos.y = Mathf.Clamp(transform.position.y, -_playerLimits.x, _playerLimits.y);
+            newPos.y = Mathf.Clamp(transform.position.y, -_playerLimits.y, _playerLimits.y);
             
             transform.position = newPos;
         }

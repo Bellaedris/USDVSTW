@@ -122,6 +122,67 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &15539426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 15539428}
+  - component: {fileID: 15539429}
+  m_Layer: 0
+  m_Name: WaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &15539428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15539426}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.20000002, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &15539429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15539426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e778c0bdaf6f2549924089e906b3de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalChaserPrefab: {fileID: 3857313612333330447, guid: 62b2e2045050bc24d87e8bc2c684c02a,
+    type: 3}
+  rareSwarmPrefab: {fileID: 3837071723856993234, guid: fbba19e2fea323d499453620605f351f,
+    type: 3}
+  rareFlyerPrefab: {fileID: 4389084859007027083, guid: 0997ea3d17cc5764f8173ab62ce92362,
+    type: 3}
+  rarestTankPrefab: {fileID: 1169059682551800298, guid: 4ed03f381ce3e1049beaa9f57f5e916f,
+    type: 3}
+  spawnInterval: 3
+  initialEnemiesPerWave: 5
+  waveIncreaseFactor: 1.1
+  maxEnemiesPerWave: 20
+  delayBetweenWaves: 5
+  background: {fileID: 368801418}
+  spawnBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!4 &57973740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 12732457308682891, guid: 92671bd0bc45f2a4b9317f9bf955f6cf,
@@ -583,7 +644,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.94, z: -15.04}
+  m_LocalPosition: {x: 0, y: 0, z: -15.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3429,3 +3490,4 @@ SceneRoots:
   - {fileID: 1401288296}
   - {fileID: 666790982}
   - {fileID: 1676858069}
+  - {fileID: 15539428}
