@@ -11,10 +11,15 @@ namespace usd
     {
         public TMP_Text timerText;
         public TMP_Text waveText;
+        public TMP_Text scoreText;
 
         public RawImage laserLevel;
         public RawImage gatlingLevel;
         public RawImage blackHoleLevel;
+        
+        public Slider laserLevelSlider;
+        public Slider gatlingLevelSlider;
+        public Slider blackHoleLevelSlider;
         
         private static GameManager _instance;
         
@@ -41,18 +46,35 @@ namespace usd
             waveText.text = $"Wave {wave}";
         }
 
-        public void SwitchWeapon(int weaponID)
+        public void SwitchWeapon(int weaponID, int weaponLevel)
         {
+            var sliderValue = (weaponLevel + 1) / 6f;
             switch (weaponID)
             {
-                case 0:
-                    //laserLevel.material.SetVector("_glowDirection", new Vector4(0, 1, 0, 0));
-                    break;
                 case 1:
+                    laserLevelSlider.value = sliderValue;
+                    laserLevel.color = Color.white;
+                    gatlingLevel.color = Color.grey;
+                    blackHoleLevel.color = Color.grey;
                     break;
                 case 2:
+                    gatlingLevelSlider.value = sliderValue;
+                    laserLevel.color = Color.grey;
+                    gatlingLevel.color = Color.white;
+                    blackHoleLevel.color = Color.grey;
+                    break;
+                case 3:
+                    blackHoleLevelSlider.value = sliderValue;
+                    laserLevel.color = Color.grey;
+                    gatlingLevel.color = Color.grey;
+                    blackHoleLevel.color = Color.white;
                     break;
             }
+        }
+
+        public void displayScore(int score)
+        {
+            scoreText.text = $"Score: {score}";
         }
     }
 }
