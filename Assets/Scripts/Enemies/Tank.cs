@@ -24,7 +24,8 @@ namespace usd.Enemies
             RotateEntityTowardsPlayer(180.0f, 90.0f);
             
             // // Shoot if possible
-            if (limits.Contains(transform.position) && CanShoot())
+            if (!(transform.position.x > shootLimits.x && transform.position.x < -shootLimits.x && transform.position.y > shootLimits.y && transform.position.y < -shootLimits.y) 
+                && CanShoot())
             {
                 Shoot();
             }

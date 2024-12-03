@@ -139,7 +139,7 @@ MonoBehaviour:
   health: 30
   limits:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 20, y: 20, z: 20}
+    m_Extent: {x: 15, y: 15, z: 15}
   movementSpeed: 2
   projectileSpeed: 3
   projectileDamage: 20

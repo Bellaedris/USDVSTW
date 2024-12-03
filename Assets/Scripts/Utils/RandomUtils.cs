@@ -46,5 +46,37 @@ namespace usd.Utils
 
             return ret;
         }
+        
+        /*
+         * Generate a random position inside a rectangle with bounds parameter
+         */
+        public static Vector3 RandomInRectangleBorder(ref Bounds bounds)
+        {
+            int side = UnityEngine.Random.Range(0, 4);
+            float minX = bounds.min.x;
+            float maxX = bounds.max.x;
+            float minY = bounds.min.y;
+            float maxY = bounds.max.y;
+
+            // We pick a side at random, then place ourselves on that side and randomize the other axis
+            Vector3 ret;
+            switch (side)
+            {
+                case 0: // left
+                    ret = new Vector2(minX, Random.Range(minY, maxY));
+                    break;
+                case 1: // right
+                    ret = new Vector2(maxX, Random.Range(minY, maxY));
+                    break;
+                case 2: // top
+                    ret = new Vector2(Random.Range(minX, maxX), minY);
+                    break;
+                default: // bottom
+                    ret = new Vector2(Random.Range(minX, maxX), maxY);
+                    break;
+            }
+
+            return ret;
+        }
     }
 }

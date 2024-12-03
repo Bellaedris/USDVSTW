@@ -172,7 +172,7 @@ MonoBehaviour:
   health: 1000
   limits:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 20, y: 20, z: 20}
+    m_Extent: {x: 15, y: 15, z: 15}
   movementSpeed: 0.5
   projectileSpeed: 10
   projectileDamage: 20

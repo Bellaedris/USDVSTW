@@ -93,7 +93,7 @@ namespace usd.Enemies
         {
             transform.position = transform.position + moveDirection * movementSpeed * Time.deltaTime;
             
-            if(!limits.Contains(transform.position))
+            if(transform.position.x > shootLimits.x || transform.position.x < -shootLimits.x || transform.position.y > shootLimits.y || transform.position.y < -shootLimits.y)
                 CalculateRandomDirection();
             
             // Death of spawner if all units dead
