@@ -144,7 +144,8 @@ namespace usd
             // follow the mouse position
             Vector3 lookDirection = Quaternion.Euler(0, 0, 90) * (_mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position);
 
-            transform.rotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: lookDirection);
+            if(Time.timeScale > 0)
+                transform.rotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: lookDirection);
             
             // move in the limits of the terrain
             Vector3 input = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);

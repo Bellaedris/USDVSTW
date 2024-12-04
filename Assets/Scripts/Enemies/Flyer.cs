@@ -132,6 +132,7 @@ namespace usd.Enemies
             // Sinusoidal oscillation perpendicular to the movement direction
             float oscillationOffset = Mathf.Sin(Time.time * frequency) * amplitude;
             Vector3 sinusoidalMovement = perpendicularDirection * oscillationOffset;
+            sinusoidalMovement = forwardMovement.magnitude <= 0 ? Vector3.zero : sinusoidalMovement;
 
             // Calculate the new position
             Vector3 newPosition = transform.position + forwardMovement + sinusoidalMovement;
