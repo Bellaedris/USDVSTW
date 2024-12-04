@@ -12,7 +12,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -4302940405818850934, guid: a0cf6ca14d0453644a7d3abc49d53b61,
+      objectReference: {fileID: 2838047407261934760, guid: 2e772b3a80fe50d4d8292e32ccc72298,
         type: 3}
     - target: {fileID: 3734812494689286071, guid: 62b2e2045050bc24d87e8bc2c684c02a,
         type: 3}
@@ -37,17 +37,17 @@ PrefabInstance:
     - target: {fileID: 5819523993410038553, guid: 62b2e2045050bc24d87e8bc2c684c02a,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 150
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5819523993410038553, guid: 62b2e2045050bc24d87e8bc2c684c02a,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 150
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5819523993410038553, guid: 62b2e2045050bc24d87e8bc2c684c02a,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 150
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5819523993410038553, guid: 62b2e2045050bc24d87e8bc2c684c02a,
         type: 3}
@@ -106,9 +106,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7004429078037564034, guid: 62b2e2045050bc24d87e8bc2c684c02a,
         type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7004429078037564034, guid: 62b2e2045050bc24d87e8bc2c684c02a,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: cfcfd7911c3d5fd4eab8e9ea8212d971, type: 2}
+      objectReference: {fileID: -3846018093981099296, guid: 2e772b3a80fe50d4d8292e32ccc72298,
+        type: 3}
+    - target: {fileID: 7004429078037564034, guid: 62b2e2045050bc24d87e8bc2c684c02a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -6087771358165109452, guid: 2e772b3a80fe50d4d8292e32ccc72298,
+        type: 3}
     - target: {fileID: 8837975131214019177, guid: 62b2e2045050bc24d87e8bc2c684c02a,
         type: 3}
       propertyPath: health
@@ -210,7 +222,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.011356875
-  m_Height: 0.022998555
+  m_Radius: 1.21
+  m_Height: 2.87
   m_Direction: 1
-  m_Center: {x: 0, y: 0.0021434613, z: 0}
+  m_Center: {x: 0, y: 0.17, z: 0}
