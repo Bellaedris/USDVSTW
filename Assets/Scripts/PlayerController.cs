@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using usd.Weapons;
 using Random = UnityEngine.Random;
@@ -147,27 +148,28 @@ namespace usd
             {
                 // change weapon to the one associated with the upgrade, then increment its level
                 var upgrade = other.GetComponent<Upgrade>();
-                _currentWeapon.gameObject.SetActive(false);
-                _currentWeapon = _weapons[upgrade.weaponID - 1];
-                _currentWeapon.gameObject.SetActive(true);
-                _currentWeapon.LevelUp();
-                // foreach (var weapon2 in _weapons)
-                // {
-                //     Debug.Log("ID : " + weapon2.weaponID + "--Cur lvl : " + weapon2._currentLevel);
-                // }
-                // Debug.Log("---------------------------------------------------------------------");
-                
-                UIManager.Instance.SwitchWeapon(upgrade.weaponID, _currentWeapon._currentLevel);
-                Destroy(other.gameObject);
+                if (!upgrade.hasBeenPickedUp)
+                {
+                    var id = upgrade.weaponID;
+                    upgrade.hasBeenPickedUp = true;
+                    Destroy(other.gameObject);
+                    _currentWeapon.gameObject.SetActive(false);
+                    _currentWeapon = _weapons[id - 1];
+                    _currentWeapon.gameObject.SetActive(true);
+                    _currentWeapon.LevelUp();
+                    UIManager.Instance.SwitchWeapon(id, _currentWeapon._currentLevel);
+                }
             } 
             else if (other.CompareTag("Nmy_Projectile"))
             {
+                // Debug.Log(name + " hit by " + other.name);
                 //TODO trigger ally hit animation
                 RegisterHit();
                 Destroy(other.gameObject);
             }
             else if (other.CompareTag("Nmy"))
             {
+                // Debug.Log(name + " hit by " + other.name);
                 //TODO trigger ally hit animation
                 RegisterHit();
             }

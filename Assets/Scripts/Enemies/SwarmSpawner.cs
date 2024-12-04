@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using usd.Enemies.Projectiles;
+using Random = UnityEngine.Random;
 
 namespace usd.Enemies
 {
@@ -64,7 +66,24 @@ namespace usd.Enemies
         }
         
         void Start()
-        {
+        {            
+            // Difficulty scaling every 5 waves
+            int difficultyModifier = UIManager.Instance.difficultyModifier;
+            if (difficultyModifier > 0)
+            {
+                difficultyModifier = Math.Min(difficultyModifier, 10);
+                var difficultyRatio = difficultyModifier / 5.0f;
+                // for scaling number of units : Un+1 = (n+1)²
+                for (int i = 0; i < difficultyModifier; i++)
+                {
+                    numberOfUnits = numberOfUnits + 2 * Mathf.CeilToInt(Mathf.Sqrt(numberOfUnits)) + 1;
+                }
+                health += health * difficultyRatio;
+                projectileSpeed += (int) (projectileSpeed * difficultyRatio);
+                projectileDamage += (int) (projectileDamage * difficultyRatio);
+                fireRate += fireRate * difficultyRatio;
+            }
+            
             // Offset position by a fixed value depending on number of units, so that it spawns around the spawner
             player = GameObject.Find("player");
             int unitsPerSide = Mathf.CeilToInt(Mathf.Sqrt(numberOfUnits));

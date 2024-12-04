@@ -30,6 +30,8 @@ namespace usd
         
         public static UIManager Instance => _instance;
 
+        [HideInInspector] public int difficultyModifier = 0;
+
         private void Awake()
         {
             if(_instance == null)
@@ -52,6 +54,10 @@ namespace usd
         public void SetWaveNumber(int wave)
         {
             waveText.text = $"Wave {wave}";
+            if (wave % 5 == 0)
+            {
+                difficultyModifier++;
+            }
         }
 
         public void SwitchWeapon(int weaponID, int weaponLevel)

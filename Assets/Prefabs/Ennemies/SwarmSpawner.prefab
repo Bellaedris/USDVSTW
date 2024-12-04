@@ -147,11 +147,11 @@ MonoBehaviour:
     type: 3}
   scoreValue: 50
   dropPrefab:
-  - {fileID: 6585106654912148602, guid: 6e37bc134b9592446b27ebf7f64fbcd2, type: 3}
-  - {fileID: 6585106654912148602, guid: 6e37bc134b9592446b27ebf7f64fbcd2, type: 3}
+  - {fileID: 6585106654912148602, guid: 6ed46e7566fb4564983c9bca4843f93a, type: 3}
+  - {fileID: 6585106654912148602, guid: 72044a27c2e07a54888e414b4e67bd69, type: 3}
   - {fileID: 6585106654912148602, guid: 6e37bc134b9592446b27ebf7f64fbcd2, type: 3}
   dropRate:
-  - 0.6
+  - 0.4
   - 0.2
   - 0.2
   limits:
