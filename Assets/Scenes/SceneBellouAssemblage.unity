@@ -4283,6 +4283,7 @@ MonoBehaviour:
   blackHoleLevelSlider: {fileID: 1457499384}
   pauseUI: {fileID: 379955299}
   gameOverUI: {fileID: 1816140561}
+  difficultyModifier: 0
 --- !u!4 &1676858069
 Transform:
   m_ObjectHideFlags: 0

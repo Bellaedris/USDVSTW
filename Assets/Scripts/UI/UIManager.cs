@@ -48,6 +48,9 @@ namespace usd
 
         private void OnGUI()
         {
+            if (!timerText)
+                return;
+            
             //display the game time
             var time = Time.timeSinceLevelLoad;
             float seconds = time % 60;
