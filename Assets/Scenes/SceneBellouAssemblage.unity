@@ -1094,8 +1094,8 @@ MonoBehaviour:
   - {fileID: 7773281082665562704, guid: 9cf1129ecf957204aa4b6042758c9c7a, type: 3}
   - {fileID: 3986473632558986674, guid: 6fa964705060f3941a29d5cfc473d76c, type: 3}
   maxNumberOfBackgroundObjects: 2
-  minScale: 0.1
-  maxScale: 2
+  minScale: 0.01
+  maxScale: 0.8
 --- !u!65 &368801424
 BoxCollider:
   m_ObjectHideFlags: 0
