@@ -3,6 +3,9 @@ using usd.Weapons.Projectiles;
 
 namespace usd.Weapons
 {
+    /// <summary>
+    /// A weapon that shoots projectiles in a straight line. Projectiles will stack on top of each other.
+    /// </summary>
     public class Linear : Weapon
     {
         public override void Shoot()

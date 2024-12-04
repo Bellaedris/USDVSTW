@@ -16,7 +16,7 @@ namespace usd.Utils
         }
 
         /*
-         * Generate a random powition on the border of a rectangle
+         * Generate a random position on the border of a rectangle
          */
         public static Vector3 RandomInRectangleBorder(ref BoxCollider collider)
         {

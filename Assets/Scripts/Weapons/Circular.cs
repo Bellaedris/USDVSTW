@@ -23,7 +23,7 @@ namespace usd.Weapons
             
             for (int i = 0; i < projCount; i++)
             {
-                // Calculate the angle for each projectile in the fan (around the Z-axis in 2D)
+                // Calculate the angle for each projectile in the circle (around the Z-axis in 2D)
                 float angle = angleOffset * i;
 
                 var position = transform.position +
@@ -39,6 +39,7 @@ namespace usd.Weapons
 
         private void Update()
         {
+            // the weapon manages the projectiles movement
             transform.Rotate(Vector3.forward, Time.deltaTime * upgrades[_currentLevel].projectileSpeed);
         }
     }

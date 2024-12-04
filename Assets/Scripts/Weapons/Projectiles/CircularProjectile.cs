@@ -5,19 +5,23 @@ using usd.Enemies;
 
 namespace usd.Weapons.Projectiles
 {
+    /// <summary>
+    /// A projectile that spins around an actor. The movement is handled by the weapon itself, while the projectile
+    /// only accounts for its lifetime and collision handling
+    /// </summary>
     public class CircularProjectile : MonoBehaviour
     {
         [HideInInspector]
         public float damage;
         
         public float lifetime;
-        // Update is called once per frame
+        
         void Update()
         {
+            //the projectile manages its lifetime by itself
             lifetime -= Time.deltaTime;
             if(lifetime < 0)
                 Destroy(gameObject);
-            //transform.position = new Vector3(Mathf.Cos(Time.deltaTime * speed) * 2f, Mathf.Sin(Time.deltaTime * speed) * 2f, 0f);
         }
 
         private void OnTriggerStay(Collider other)

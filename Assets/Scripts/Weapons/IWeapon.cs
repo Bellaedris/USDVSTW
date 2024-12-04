@@ -3,11 +3,17 @@ using UnityEngine;
 
 namespace usd.Weapons
 {
+    /// <summary>
+    /// Generic weapon
+    /// </summary>
     public abstract class Weapon : MonoBehaviour
     {
         public AudioClip sound;
         public int weaponID;
         public GameObject projectilePrefab;
+        /// <summary>
+        /// WeaponLevel is an array of scriptable object containing the data of all of the weapon's levels
+        /// </summary>
         public WeaponLevel[] upgrades;
         public int _currentLevel;
 
@@ -51,6 +57,7 @@ namespace usd.Weapons
         
         public abstract void Shoot();
 
+        // constantly shoot the weapon at its fire rate frequency.
         protected IEnumerator ShootOnCooldown()
         {
             while (true)

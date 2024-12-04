@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace usd.Background
 {
+    /// <summary>
+    /// UNUSED, parallax effect for 2D side-scrolling.
+    /// </summary>
     public class Parallax : MonoBehaviour
     {
         

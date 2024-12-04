@@ -11,6 +11,7 @@ namespace usd.UI
         
         private void Awake()
         {
+            //singleton 
             if(_instance == null)
                 _instance = this;
             else 

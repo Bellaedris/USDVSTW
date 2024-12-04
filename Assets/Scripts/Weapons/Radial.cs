@@ -3,6 +3,9 @@ using usd.Weapons.Projectiles;
 
 namespace usd.Weapons
 {
+    /// <summary>
+    /// A weapon that shoots projectiles in a fan in front of the actor.
+    /// </summary>
     public class Radial : Weapon
     {
         public float shootRadius = 60f;

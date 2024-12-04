@@ -7,9 +7,16 @@ using UnityEngine.UI;
 
 namespace usd
 {
+    /// <summary>
+    /// manages the UIs of the main menu and the game scene
+    /// </summary>
     public class UIManager : MonoBehaviour
     {
-        public event Action gameOver;
+        /// <summary>
+        /// Observer pattern. Observers register a callback to this object, that is called when the game is over.
+        /// used to update the game state when the game is over so everything can stop spawning and moving.
+        /// </summary>
+        public event Action gameOver; 
         
         public TMP_Text timerText;
         public TMP_Text waveText;
@@ -38,6 +45,7 @@ namespace usd
 
         private void Awake()
         {
+            // singleton
             if(_instance == null)
                 _instance = this;
             else
@@ -48,6 +56,7 @@ namespace usd
 
         private void OnGUI()
         {
+            // do nothing if no timer UI element was given to the script
             if (!timerText)
                 return;
             
@@ -101,6 +110,7 @@ namespace usd
 
         public void TogglePauseMenu()
         {
+            // do nothing if the game is over, there is a menu already
             if (_isGameOver)
                 return;
             
@@ -109,6 +119,7 @@ namespace usd
                 Time.timeScale = 0;
             else
                 Time.timeScale = _timeScale;
+            
             _isPaused = !_isPaused;
             pauseUI.SetActive(!pauseUI.activeSelf);
         }
@@ -120,6 +131,10 @@ namespace usd
             blackHoleLevelSlider.value = (blackHoleLevel + 1) / 6f;
         }
 
+        /// <summary>
+        /// Since the AudioManager is passed through the scene, it is the UI Manager that dispatches the calls to Audio Manager
+        /// </summary>
+        /// <param name="volume">callback from slider value, between 0 and 1</param>
         public void UpdateMusicVolume(float volume)
         {
             AudioManager.Instance.UpdateMasterVolume(volume);
@@ -132,10 +147,9 @@ namespace usd
         
         public void ShowGameOver()
         {
-            // delete all enemies on the map? 
             _isGameOver = true;
-            gameOver?.Invoke();
-            StartCoroutine(waitBeforeShowingDeathUI());
+            gameOver?.Invoke(); // all gameObjects subscribed to this Action will activate their callback method
+            StartCoroutine(waitBeforeShowingDeathUI()); // wait 1s before showing the Game Over UI so the player can appreciate our nice particle systems
         }
 
         IEnumerator waitBeforeShowingDeathUI()

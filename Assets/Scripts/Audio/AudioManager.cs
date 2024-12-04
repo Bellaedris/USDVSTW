@@ -24,6 +24,7 @@ namespace usd
         
         void Awake()
         {
+            //singleton
             if(_instance == null)
             {
                 _instance = this;
@@ -44,28 +45,57 @@ namespace usd
             _bgm[4] = sources[6]; //maxhealth
         }
 
+        /// <summary>
+        /// Interpolate between a minimal and maximal sound volume on the master audio mixer
+        /// </summary>
+        /// <param name="value">callback from the slider value: something between 0 and 1</param>
         public void UpdateMasterVolume(float value)
         {
-            float newVolume = Mathf.Lerp(-80f, 20f, value);
+            float newVolume = Mathf.Lerp(-40f, 20f, value);
             masterVolume.SetFloat("volume", newVolume);
         }
         
+        /// <summary>
+        /// Same as UpdateMasterVolume, but applied to the SFX audio mixer
+        /// </summary>
+        /// <param name="value">callback from the slider value: something between 0 and 1</param>
         public void UpdateSfxVolume(float value)
         {
-            float newVolume = Mathf.Lerp(-80f, 20f, value);
+            float newVolume = Mathf.Lerp(-40f, 20f, value);
             vfxVolume.SetFloat("volume", newVolume);
         }
 
+        /// <summary>
+        /// Play a once shot sound on the player audio source. Called by the player weapons. 
+        /// The sources are splitted since the weapons sounds are very present and would kind of overwhelm a single audio sources
+        /// </summary>
+        /// <param name="clip">the sound to play</param>
         public void playWeaponSound(AudioClip clip)
         {
             _playerSource.PlayOneShot(clip);
         }
         
+        /// <summary>
+        /// Play a once shot sound on the weapons audio source. Called by the player himself and the enemies. 
+        /// This audio source manages SFX that are called less often than the weapon sounds.
+        /// </summary>
+        /// <param name="clip">the sound to play</param>
         public void playGeneralSound(AudioClip clip)
         {
             _enemiesSource.PlayOneShot(clip);
         }
 
+        /// <summary>
+        /// Fades the current music track out and fades the new music in.
+        /// The IDs correspond to:
+        /// - 0 : laser weapon music
+        /// - 1 : gatling music
+        /// - 2 : black hole music
+        /// - 3 : low health music
+        /// - 4 : high health music
+        /// </summary>
+        /// <param name="newWeaponID">ID of the weapon currently equipped</param>
+        /// <param name="level">level of the weapon currently equipped</param>
         public void FadeMusic(int newWeaponID, int level)
         {
             // do nothing if the weapon didn't change
@@ -91,6 +121,7 @@ namespace usd
 
         private IEnumerator crossFade(AudioSource from, AudioSource to, float fadeTime)
         {
+            // linearly interpolate volume in and out
             float elapsed = 0f;
             while (elapsed < fadeTime)
             {

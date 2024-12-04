@@ -3,6 +3,9 @@ using usd.Enemies;
 
 namespace usd.Weapons.Projectiles
 {
+    /// <summary>
+    /// A projectile that travels in a straight line at constant speed.
+    /// </summary>
     public class LinearProjectile : MonoBehaviour
     {
         private Vector2 limits;
@@ -20,15 +23,12 @@ namespace usd.Weapons.Projectiles
             limits = new Vector2(sizeX, sizeY);
         }
         
-        // Update is called once per frame
         void Update()
         {
             if (transform.position.x > limits.x || transform.position.x < -limits.x || transform.position.y > limits.y || transform.position.y < -limits.y)
-            {
                 Destroy(gameObject);
-            }
+            
             transform.Translate(transform.right * (speed * Time.deltaTime), Space.World);
-            // Debug.Log(gameObject.GetComponent<Collider>());
         }
 
         private void OnTriggerEnter(Collider other)
