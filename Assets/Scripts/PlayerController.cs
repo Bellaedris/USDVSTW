@@ -28,7 +28,7 @@ namespace usd
         public void _addScore(int points)
         {
             score += points;
-            Debug.Log("Score : " + score);
+            UIManager.Instance.DisplayScore(score);
         }
         
         public Weapon[] _getWeapons()
@@ -70,6 +70,8 @@ namespace usd
                 else
                 {
                     StartCoroutine(DoInvulnerability());
+                    score = Math.Max(0, score - 1000);
+                    UIManager.Instance.DisplayScore(score);
                     _DowngradeWeapons();
                 }
             }
@@ -115,6 +117,7 @@ namespace usd
             
             canBeHit = true;
             score = 0;
+            UIManager.Instance.DisplayScore(score);
         }
 
         // Update is called once per frame
