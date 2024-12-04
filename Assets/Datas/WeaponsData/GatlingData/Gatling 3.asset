@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Gatling 3
   m_EditorClassIdentifier: 
   weaponProjectiles: 7
-  projectileSpeed: 20
+  projectileSpeed: 15
   projectileRange: 1
   projectileDuration: 1
   projectileDamage: 60
-  fireRate: 3
+  fireRate: 2

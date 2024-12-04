@@ -27,7 +27,6 @@ namespace usd.Enemies.Projectiles
             float sizeX = sizeY * _mainCamera.aspect;
             limits = new Bounds(_mainCamera.transform.position, new Vector3(sizeX * 2, sizeY * 2, 50));
             
-            Debug.Log(limits.center);
             moveDirection = (target - transform.position).normalized;
         }
         // Update is called once per frame

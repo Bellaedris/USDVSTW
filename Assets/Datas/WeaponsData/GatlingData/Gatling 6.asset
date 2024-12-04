@@ -16,5 +16,5 @@ MonoBehaviour:
   projectileSpeed: 25
   projectileRange: 1
   projectileDuration: 1
-  projectileDamage: 120
-  fireRate: 6
+  projectileDamage: 130
+  fireRate: 4

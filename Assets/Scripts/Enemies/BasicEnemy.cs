@@ -99,6 +99,18 @@ namespace usd.Enemies
 
         public void Die()
         {
+            StartCoroutine(DieCoroutine());
+        }
+        
+        private IEnumerator DieCoroutine()
+        {
+            yield return DropLoot();
+            Destroy(gameObject);
+        }
+        
+        private IEnumerator DropLoot()
+        {
+            yield return new WaitForSeconds(0.75f);
             // Drop loot before death
             var hasDropped = false;
             var dropRateCum = 0.0f;
@@ -111,7 +123,6 @@ namespace usd.Enemies
                     hasDropped = true;
                 }
             }
-            Destroy(gameObject);
         }
     }
 }

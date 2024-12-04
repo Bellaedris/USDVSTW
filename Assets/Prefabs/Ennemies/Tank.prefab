@@ -170,9 +170,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1000
-  limits:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 15, y: 15, z: 15}
   movementSpeed: 0.5
   projectileSpeed: 10
   projectileDamage: 20
@@ -184,12 +181,16 @@ MonoBehaviour:
   scoreValue: 1000
   dropPrefab:
   - {fileID: 6585106654912148602, guid: 6e37bc134b9592446b27ebf7f64fbcd2, type: 3}
-  - {fileID: 6585106654912148602, guid: 6ed46e7566fb4564983c9bca4843f93a, type: 3}
-  - {fileID: 6585106654912148602, guid: 72044a27c2e07a54888e414b4e67bd69, type: 3}
+  - {fileID: 6585106654912148602, guid: 6e37bc134b9592446b27ebf7f64fbcd2, type: 3}
+  - {fileID: 6585106654912148602, guid: 6e37bc134b9592446b27ebf7f64fbcd2, type: 3}
   dropRate:
   - 0.6
   - 0.2
   - 0.2
+  limits:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 15, y: 15, z: 15}
+  shootLimits: {x: 0, y: 0}
 --- !u!136 &4304937759642298761
 CapsuleCollider:
   m_ObjectHideFlags: 0

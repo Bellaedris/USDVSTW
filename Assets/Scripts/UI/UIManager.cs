@@ -81,7 +81,7 @@ namespace usd
             }
         }
 
-        public void displayScore(int score)
+        public void DisplayScore(int score)
         {
             scoreText.text = $"Score: {score}";
         }
