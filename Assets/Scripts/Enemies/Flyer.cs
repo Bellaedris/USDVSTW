@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using usd.Enemies.Projectiles;
 
 namespace usd.Enemies
@@ -17,6 +18,18 @@ namespace usd.Enemies
             timeLastShot = 0.0f;
             player = GameObject.Find("player");
 
+            // Difficulty scaling every 5 waves
+            int difficultyModifier = UIManager.Instance.difficultyModifier;
+            if (difficultyModifier > 0)
+            {
+                difficultyModifier = Math.Min(difficultyModifier, 10);
+                var difficultyRatio = difficultyModifier / 5.0f;
+                health += health * difficultyRatio;
+                projectileSpeed += (int) (projectileSpeed * difficultyRatio);
+                projectileDamage += (int) (projectileDamage * difficultyRatio);
+                fireRate += fireRate * difficultyRatio;
+            }
+            
             // Calculate the direction towards the player in X-Y plane (ignore Z)
             CalculateDirection();
         }

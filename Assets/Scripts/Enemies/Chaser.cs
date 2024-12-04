@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using usd.Enemies.Projectiles;
 
 namespace usd.Enemies
@@ -7,6 +8,19 @@ namespace usd.Enemies
     {
         void Start()
         {
+            // Difficulty scalign every 5 waves
+            int difficultyModifier = UIManager.Instance.difficultyModifier;
+            if (difficultyModifier > 0)
+            {
+                difficultyModifier = Math.Min(difficultyModifier, 10);
+                var difficultyRatio = difficultyModifier / 5.0f;
+                health += health * difficultyRatio;
+                movementSpeed += movementSpeed * difficultyRatio;
+                projectileSpeed += (int) (projectileSpeed * difficultyRatio);
+                projectileDamage += (int) (projectileDamage * difficultyRatio);
+                fireRate += fireRate * difficultyRatio;
+            }
+            
             timeLastShot = 0.0f;
             player = GameObject.Find("player");
             playerPosition = player.transform.position;
