@@ -25,6 +25,7 @@ namespace usd
         private MeshRenderer _meshRenderer;
         
         private bool canBeHit;
+        private bool _isGameOver;
         private int score;
         
         public int _getScore()
@@ -70,7 +71,7 @@ namespace usd
             {      
                 if (CheckGameOver())
                 {
-                    //TODO Game Manager call game over
+                    _isGameOver = true;
                     UIManager.Instance.ShowGameOver();
                     Destroy(gameObject);
                     Instantiate(deathParticles, transform.position, Quaternion.identity);
@@ -135,6 +136,9 @@ namespace usd
         // Update is called once per frame
         void Update()
         {
+            if(_isGameOver)
+                return;
+            
             // follow the mouse position
             Vector3 lookDirection = Quaternion.Euler(0, 0, 90) * (_mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position);
 

@@ -25,11 +25,15 @@ namespace usd.Enemies
                 projectileDamage += (int) (projectileDamage * difficultyRatio);
                 fireRate += fireRate * difficultyRatio;
             }
+            
+            _uiManager = FindObjectOfType<UIManager>();
+            if (_uiManager != null)
+                _uiManager.gameOver += OnGameOver;
         }
         
         void Update()
         {
-            if (player == null)
+            if (_isGameOver)
                 return;
             
             timeLastShot += Time.deltaTime;

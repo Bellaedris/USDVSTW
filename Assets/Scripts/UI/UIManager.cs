@@ -9,6 +9,8 @@ namespace usd
 {
     public class UIManager : MonoBehaviour
     {
+        public event Action gameOver;
+        
         public TMP_Text timerText;
         public TMP_Text waveText;
         public TMP_Text scoreText;
@@ -129,6 +131,7 @@ namespace usd
         {
             // delete all enemies on the map? 
             _isGameOver = true;
+            gameOver?.Invoke();
             StartCoroutine(waitBeforeShowingDeathUI());
         }
 

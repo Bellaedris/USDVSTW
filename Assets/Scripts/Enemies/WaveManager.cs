@@ -33,7 +33,9 @@ namespace usd.Enemies
 
         private int currentWave = 0;
         private int enemiesPerWave;
-        private bool _isGameRunning = true;
+        
+        private UIManager _uiManager;
+        private bool _isGameOver;
 
         void Start()
         {
@@ -43,11 +45,15 @@ namespace usd.Enemies
             float sizeX = sizeY * _mainCamera.aspect;
             spawnBounds = new Bounds(_mainCamera.transform.position, new Vector3(sizeX * 2, sizeY * 2, 0));
             StartCoroutine(SpawnWaves());
+            
+            _uiManager = FindObjectOfType<UIManager>();
+            if (_uiManager != null)
+                _uiManager.gameOver += OnGameOver;
         }
 
         IEnumerator SpawnWaves()
         {
-            while (_isGameRunning)
+            while (!_isGameOver)
             {
                 currentWave++;
                 UIManager.Instance.SetWaveNumber(currentWave);
@@ -72,6 +78,9 @@ namespace usd.Enemies
 
         void SpawnEnemy()
         {
+            if (_isGameOver)
+                return;
+            
             GameObject enemyToSpawn = SelectEnemyPrefab();
 
             // Randomize spawn position within the defined area
@@ -93,6 +102,11 @@ namespace usd.Enemies
                 return rareFlyerPrefab;
             else
                 return rarestTankPrefab;
+        }
+
+        private void OnGameOver()
+        {
+            _isGameOver = true;
         }
     }
 }
