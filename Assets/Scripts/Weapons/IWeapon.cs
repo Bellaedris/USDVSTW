@@ -55,7 +55,7 @@ namespace usd.Weapons
         {
             while (true)
             {
-                Shoot();
+                // Shoot();
                 _audioManager.playPlayerSound(sound);
                 if (isEnemyOnScreen()) 
                     Shoot();
