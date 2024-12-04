@@ -10,6 +10,7 @@ TagManager:
   - Nmy
   - Nmy_Projectile
   - Projectile_S
+  - Ship
   layers:
   - Default
   - TransparentFX

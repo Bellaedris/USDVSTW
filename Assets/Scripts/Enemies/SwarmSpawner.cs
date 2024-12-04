@@ -73,7 +73,11 @@ namespace usd.Enemies
             {
                 difficultyModifier = Math.Min(difficultyModifier, 10);
                 var difficultyRatio = difficultyModifier / 5.0f;
-                numberOfUnits += (int) (numberOfUnits * difficultyRatio * 2);
+                // for scaling number of units : Un+1 = (n+1)²
+                for (int i = 0; i < difficultyModifier; i++)
+                {
+                    numberOfUnits = numberOfUnits + 2 * Mathf.CeilToInt(Mathf.Sqrt(numberOfUnits)) + 1;
+                }
                 health += health * difficultyRatio;
                 projectileSpeed += (int) (projectileSpeed * difficultyRatio);
                 projectileDamage += (int) (projectileDamage * difficultyRatio);

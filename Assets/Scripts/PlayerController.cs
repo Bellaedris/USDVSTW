@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using usd.Weapons;
 using Random = UnityEngine.Random;
@@ -149,23 +150,26 @@ namespace usd
                 var upgrade = other.GetComponent<Upgrade>();
                 if (!upgrade.hasBeenPickedUp)
                 {
+                    var id = upgrade.weaponID;
                     upgrade.hasBeenPickedUp = true;
+                    Destroy(other.gameObject);
                     _currentWeapon.gameObject.SetActive(false);
-                    _currentWeapon = _weapons[upgrade.weaponID - 1];
+                    _currentWeapon = _weapons[id - 1];
                     _currentWeapon.gameObject.SetActive(true);
                     _currentWeapon.LevelUp();
-                    UIManager.Instance.SwitchWeapon(upgrade.weaponID, _currentWeapon._currentLevel);
-                    Destroy(other.gameObject);
+                    UIManager.Instance.SwitchWeapon(id, _currentWeapon._currentLevel);
                 }
             } 
             else if (other.CompareTag("Nmy_Projectile"))
             {
+                // Debug.Log(name + " hit by " + other.name);
                 //TODO trigger ally hit animation
                 RegisterHit();
                 Destroy(other.gameObject);
             }
             else if (other.CompareTag("Nmy"))
             {
+                // Debug.Log(name + " hit by " + other.name);
                 //TODO trigger ally hit animation
                 RegisterHit();
             }

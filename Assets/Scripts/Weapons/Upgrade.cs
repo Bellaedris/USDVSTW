@@ -7,13 +7,12 @@ namespace usd.Weapons
     public class Upgrade : MonoBehaviour
     {
         [HideInInspector]
-        public bool hasBeenPickedUp;
+        public bool hasBeenPickedUp = false;
         
         public int weaponID; 
         
         void Start()
         {
-            hasBeenPickedUp = false;
         }
     }
 }
