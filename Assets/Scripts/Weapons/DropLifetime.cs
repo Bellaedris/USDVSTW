@@ -19,6 +19,7 @@ namespace usd.Weapons
             if (Time.time - spawnTime > lifeDuration)
             {
                 Destroy(gameObject);
+                Debug.Log("Destroyed");
             }
             else if (Time.time - spawnTime > blinkDuration)
             {

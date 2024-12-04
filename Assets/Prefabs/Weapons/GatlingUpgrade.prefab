@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 23623491261404378}
   - component: {fileID: 4705163796196617557}
   - component: {fileID: 3887940198741292066}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: upgrade
   m_TagString: Upgrade
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3038681228556089062}
   - component: {fileID: 1799091488560115751}
   - component: {fileID: 980199348756734924}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GatlingUpgrade
   m_TagString: Upgrade
   m_Icon: {fileID: 0}

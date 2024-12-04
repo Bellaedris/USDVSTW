@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 23623491261404378}
   - component: {fileID: 4705163796196617557}
   - component: {fileID: 3887940198741292066}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: upgrade
   m_TagString: Upgrade
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5463025058958278643}
   - component: {fileID: 8600765341345934388}
   - component: {fileID: 5746783922342496896}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LaserUpgrade
   m_TagString: Upgrade
   m_Icon: {fileID: 0}
