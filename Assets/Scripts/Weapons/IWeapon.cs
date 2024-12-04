@@ -56,9 +56,11 @@ namespace usd.Weapons
             while (true)
             {
                 // Shoot();
-                _audioManager.playPlayerSound(sound);
-                if (isEnemyOnScreen()) 
-                    Shoot();
+                if (isEnemyOnScreen())
+                {
+                    _audioManager.playPlayerSound(sound);
+                    Shoot(); 
+                }
                 yield return new WaitForSeconds(1f / upgrades[_currentLevel].fireRate);
             }
         }
