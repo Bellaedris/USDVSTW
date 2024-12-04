@@ -35,6 +35,10 @@ namespace usd.Enemies
         protected GameObject player;
         protected Vector3 playerPosition;
         protected float timeLastShot;
+        
+        protected UIManager _uiManager;
+        protected bool _isGameOver;
+        
         void Start()
         {
             _mainCamera = Camera.main;
@@ -128,6 +132,11 @@ namespace usd.Enemies
                     hasDropped = true;
                 }
             }
+        }
+
+        protected void OnGameOver()
+        {
+            _isGameOver = true;
         }
     }
 }

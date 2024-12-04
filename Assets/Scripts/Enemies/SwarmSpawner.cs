@@ -21,6 +21,12 @@ namespace usd.Enemies
 
         public void CalculateRandomDirection()
         {
+            if (_isGameOver)
+            {
+                CancelInvoke("CalculateRandomDirection");
+                return;
+            }
+            
             // Calculate direction towards player position
             Vector3 playerDirection = (player.transform.position - transform.position).normalized;
 
@@ -102,6 +108,9 @@ namespace usd.Enemies
                 swarmUnit.GetComponent<SwarmUnit>().InitializeValues(this);
             }
             
+            _uiManager = FindObjectOfType<UIManager>();
+            if (_uiManager != null)
+                _uiManager.gameOver += OnGameOver;
             
             CalculateRandomDirection();
             // Call CalculateRandomDirection every 6 seconds
@@ -110,7 +119,7 @@ namespace usd.Enemies
         
         void Update()
         {
-            if (player == null)
+            if (_isGameOver)
                 return;
             
             transform.position += moveDirection * (movementSpeed * Time.deltaTime);

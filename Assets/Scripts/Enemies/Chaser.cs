@@ -24,11 +24,15 @@ namespace usd.Enemies
             timeLastShot = 0.0f;
             player = GameObject.Find("player");
             playerPosition = player.transform.position;
+            
+            _uiManager = FindObjectOfType<UIManager>();
+            if (_uiManager != null)
+                _uiManager.gameOver += OnGameOver;
         }
         
         void Update()
         {
-            if (player == null)
+            if (_isGameOver)
                 return;
             
             timeLastShot += Time.deltaTime;

@@ -32,11 +32,15 @@ namespace usd.Enemies
             
             // Calculate the direction towards the player in X-Y plane (ignore Z)
             CalculateDirection();
+            
+            _uiManager = FindObjectOfType<UIManager>();
+            if (_uiManager != null)
+                _uiManager.gameOver += OnGameOver;
         }
 
         void Update()
         {
-            if (player == null)
+            if (_isGameOver)
                 return;
             
             timeLastShot += Time.deltaTime;
