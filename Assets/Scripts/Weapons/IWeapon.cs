@@ -5,7 +5,7 @@ namespace usd.Weapons
 {
     public abstract class Weapon : MonoBehaviour
     {
-        public string weaponName;
+        public AudioClip sound;
         public int weaponID;
         public GameObject projectilePrefab;
         public WeaponLevel[] upgrades;
@@ -13,6 +13,8 @@ namespace usd.Weapons
 
         private Vector2 _playerLimits;
         private Camera _mainCamera;
+        
+        private AudioManager _audioManager;
         
         private bool isEnemyOnScreen()
         {
@@ -31,6 +33,7 @@ namespace usd.Weapons
         
         void Start()
         {
+            _audioManager = AudioManager.Instance;
             _mainCamera = Camera.main;
             float sizeY = _mainCamera.orthographicSize;
             float sizeX = sizeY * _mainCamera.aspect;
@@ -52,7 +55,8 @@ namespace usd.Weapons
         {
             while (true)
             {
-                // Debug.Log("WEE");
+                Shoot();
+                _audioManager.playPlayerSound(sound);
                 if (isEnemyOnScreen()) 
                     Shoot();
                 yield return new WaitForSeconds(1f / upgrades[_currentLevel].fireRate);
@@ -62,6 +66,8 @@ namespace usd.Weapons
         public void LevelUp()
         {
             _currentLevel++;
+            if(_audioManager == null)
+                _audioManager = AudioManager.Instance;
             _currentLevel = _currentLevel > 5 ? 5 : _currentLevel;
             // restart the coroutine to resume shooting
             StartCoroutine(ShootOnCooldown());
