@@ -16,9 +16,20 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
         type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c2926bea3d83a074fb8e054444a2449e, type: 3}
+    - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
       propertyPath: fireLineSize
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
+        type: 3}
+      propertyPath: deathParticles
+      value: 
+      objectReference: {fileID: 2377741972714469437, guid: 8208f7fc7b941c84283e982272bc7fe5,
+        type: 3}
     - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
         type: 3}
       propertyPath: dropRate.Array.size

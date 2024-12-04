@@ -144,9 +144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  limits:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 15, y: 15, z: 15}
   movementSpeed: 0
   projectileSpeed: 0
   projectileDamage: 0
@@ -158,6 +155,13 @@ MonoBehaviour:
   scoreValue: 50
   dropPrefab: []
   dropRate: []
+  deathParticles: {fileID: 2377741972714469437, guid: 8208f7fc7b941c84283e982272bc7fe5,
+    type: 3}
+  deathSound: {fileID: 8300000, guid: c2926bea3d83a074fb8e054444a2449e, type: 3}
+  limits:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 15, y: 15, z: 15}
+  shootLimits: {x: 0, y: 0}
 --- !u!136 &2185045072798453521
 CapsuleCollider:
   m_ObjectHideFlags: 0

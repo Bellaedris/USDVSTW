@@ -29,6 +29,9 @@ namespace usd.Enemies
         
         void Update()
         {
+            if (player == null)
+                return;
+            
             timeLastShot += Time.deltaTime;
             playerPosition = player.transform.position;
             

@@ -13,10 +13,16 @@ namespace usd
         public float speed = 1f;
         public float invulnerabilityLength;
 
+        public AudioClip upgradeSound;
+        public AudioClip damageSound;
+        public AudioClip deathSound;
+        public GameObject deathParticles;
+
         private Weapon _currentWeapon;
         private Weapon[] _weapons;
         private Vector2 _playerLimits;
         private Camera _mainCamera;
+        private MeshRenderer _meshRenderer;
         
         private bool canBeHit;
         private int score;
@@ -65,10 +71,15 @@ namespace usd
                 if (CheckGameOver())
                 {
                     //TODO Game Manager call game over
+                    UIManager.Instance.ShowGameOver();
+                    Destroy(gameObject);
+                    Instantiate(deathParticles, transform.position, Quaternion.identity);
+                    AudioManager.Instance.playGeneralSound(deathSound);
                     Debug.Log("Game Over");
                 }
                 else
                 {
+                    AudioManager.Instance.playGeneralSound(damageSound);
                     StartCoroutine(DoInvulnerability());
                     score = Math.Max(0, score - 1000);
                     UIManager.Instance.DisplayScore(score);
@@ -94,9 +105,9 @@ namespace usd
             // Blink invulnerabilityLength seconds
             while (Time.time - hitTime < invulnerabilityLength)
             {
-                GetComponentInChildren<MeshRenderer>().enabled = false;
+                _meshRenderer.enabled = false;
                 yield return new WaitForSeconds(0.1f);
-                GetComponentInChildren<MeshRenderer>().enabled = true;
+                _meshRenderer.enabled = true;
                 yield return new WaitForSeconds(0.1f);
             }
             canBeHit = true;
@@ -107,6 +118,7 @@ namespace usd
         {
             _mainCamera = Camera.main;
             _weapons = transform.GetComponentsInChildren<Weapon>(true);
+            _meshRenderer = GetComponent<MeshRenderer>();
             _currentWeapon = _weapons[Random.Range(0, _weapons.Length)];
             _currentWeapon.gameObject.SetActive(true);
             UIManager.Instance.SwitchWeapon(_currentWeapon.weaponID, _currentWeapon._currentLevel);
@@ -158,6 +170,7 @@ namespace usd
                     _currentWeapon.gameObject.SetActive(true);
                     _currentWeapon.LevelUp();
                     UIManager.Instance.SwitchWeapon(id, _currentWeapon._currentLevel);
+                    AudioManager.Instance.playGeneralSound(upgradeSound);
                 }
             } 
             else if (other.CompareTag("Nmy_Projectile"))

@@ -33,6 +33,7 @@ namespace usd.Enemies
 
         private int currentWave = 0;
         private int enemiesPerWave;
+        private bool _isGameRunning = true;
 
         void Start()
         {
@@ -46,7 +47,7 @@ namespace usd.Enemies
 
         IEnumerator SpawnWaves()
         {
-            while (true)
+            while (_isGameRunning)
             {
                 currentWave++;
                 UIManager.Instance.SetWaveNumber(currentWave);
