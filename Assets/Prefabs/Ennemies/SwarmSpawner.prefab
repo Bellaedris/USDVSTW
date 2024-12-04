@@ -154,7 +154,8 @@ MonoBehaviour:
   - 0.4
   - 0.2
   - 0.2
-  deathParticles: {fileID: 0}
+  deathParticles: {fileID: 2377741972714469437, guid: 8208f7fc7b941c84283e982272bc7fe5,
+    type: 3}
   deathSound: {fileID: 8300000, guid: c2926bea3d83a074fb8e054444a2449e, type: 3}
   limits:
     m_Center: {x: 0, y: 0, z: 0}
