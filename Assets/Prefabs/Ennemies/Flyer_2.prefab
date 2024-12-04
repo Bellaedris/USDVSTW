@@ -33,10 +33,20 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3812924737173742217, guid: 0997ea3d17cc5764f8173ab62ce92362,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4389084859007027083, guid: 0997ea3d17cc5764f8173ab62ce92362,
         type: 3}
       propertyPath: m_Name
       value: Flyer_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389084859007027083, guid: 0997ea3d17cc5764f8173ab62ce92362,
+        type: 3}
+      propertyPath: m_TagString
+      value: Nmy
       objectReference: {fileID: 0}
     - target: {fileID: 6462064147328769181, guid: 0997ea3d17cc5764f8173ab62ce92362,
         type: 3}
@@ -88,7 +98,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

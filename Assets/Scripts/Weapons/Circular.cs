@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using usd.Weapons.Projectiles;
 
 namespace usd.Weapons
 {
@@ -31,6 +32,7 @@ namespace usd.Weapons
                 // Instantiate the projectile with calculated position and rotation
                 var proj = Instantiate(projectilePrefab, position, projectilePrefab.transform.rotation, transform);
                 proj.GetComponent<CircularProjectile>().lifetime = upgrades[_currentLevel].projectileDuration;
+                proj.GetComponent<CircularProjectile>().damage = upgrades[_currentLevel].projectileDamage;
                 _projectiles.Add(proj);
             }
         }

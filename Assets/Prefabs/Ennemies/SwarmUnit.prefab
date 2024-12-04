@@ -19,6 +19,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwarmUnit
       objectReference: {fileID: 0}
+    - target: {fileID: 3857313612333330447, guid: 62b2e2045050bc24d87e8bc2c684c02a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Nmy
+      objectReference: {fileID: 0}
     - target: {fileID: 5819523993410038553, guid: 62b2e2045050bc24d87e8bc2c684c02a,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -107,6 +112,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8837975131214019177, guid: 62b2e2045050bc24d87e8bc2c684c02a, type: 3}
     - {fileID: 3734812494689286071, guid: 62b2e2045050bc24d87e8bc2c684c02a, type: 3}
+    - {fileID: 6541486433113146005, guid: 62b2e2045050bc24d87e8bc2c684c02a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -140,7 +146,7 @@ MonoBehaviour:
   health: 0
   limits:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 15, y: 15, z: 15}
   movementSpeed: 0
   projectileSpeed: 0
   projectileDamage: 0
@@ -167,7 +173,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

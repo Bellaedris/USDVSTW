@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 8279367095312868926}
   - component: {fileID: 3038681228556089062}
   - component: {fileID: 1799091488560115751}
+  - component: {fileID: 980199348756734924}
   m_Layer: 0
   m_Name: GatlingUpgrade
   m_TagString: Upgrade
@@ -151,3 +152,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponID: 2
+--- !u!114 &980199348756734924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6585106654912148602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b101ad6b3714f91ac33925485b6605e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

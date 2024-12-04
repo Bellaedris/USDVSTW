@@ -139,7 +139,7 @@ MonoBehaviour:
   health: 30
   limits:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 20, y: 20, z: 20}
+    m_Extent: {x: 15, y: 15, z: 15}
   movementSpeed: 2
   projectileSpeed: 3
   projectileDamage: 20
@@ -149,8 +149,14 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5681443658355303464, guid: 02df80fd5d5471d43990032741849a6f,
     type: 3}
   scoreValue: 50
-  dropPrefab: []
-  dropRate: []
+  dropPrefab:
+  - {fileID: 6585106654912148602, guid: 6ed46e7566fb4564983c9bca4843f93a, type: 3}
+  - {fileID: 6585106654912148602, guid: 6e37bc134b9592446b27ebf7f64fbcd2, type: 3}
+  - {fileID: 6585106654912148602, guid: 72044a27c2e07a54888e414b4e67bd69, type: 3}
+  dropRate:
+  - 0.6
+  - 0.2
+  - 0.2
   numberOfUnits: 16
   unitPrefab: {fileID: 6505285921755283266, guid: bca00fd496dcc83468515375381815f0,
     type: 3}

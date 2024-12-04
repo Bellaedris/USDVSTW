@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using usd.Utils;
 
 namespace usd.Enemies
 {
@@ -13,14 +14,22 @@ namespace usd.Enemies
         public GameObject rarestTankPrefab;
 
         [Header("Wave Settings")]
-        public float spawnInterval = 2f; // Time between spawns
+        public float spawnInterval = 3f; // Time between spawns
         public int initialEnemiesPerWave = 5; // Enemies in the first wave
         public float waveIncreaseFactor = 1.2f; // Multiplier for enemies per wave
-        public int maxEnemiesPerWave = 50; // Cap for max enemies in a wave
+        public int maxEnemiesPerWave = 25; // Cap for max enemies in a wave
+        public float delayBetweenWaves = 5.0f; // Delay between waves
+        
+        [Header("Spawn Area Collider")]
+        public GameObject background;
 
-        [Header("Spawn Area")]
-        public Vector2 spawnAreaMin; // Bottom-left corner
-        public Vector2 spawnAreaMax; // Top-right corner
+        [HideInInspector]
+        public Bounds spawnBounds;
+        private Camera _mainCamera;
+        
+        // [Header("Spawn Area")]
+        // public Vector2 spawnAreaMin; // Bottom-left corner
+        // public Vector2 spawnAreaMax; // Top-right corner
 
         private int currentWave = 0;
         private int enemiesPerWave;
@@ -28,6 +37,10 @@ namespace usd.Enemies
         void Start()
         {
             enemiesPerWave = initialEnemiesPerWave;
+            _mainCamera = Camera.main;
+            float sizeY = _mainCamera.orthographicSize;
+            float sizeX = sizeY * _mainCamera.aspect;
+            spawnBounds = new Bounds(_mainCamera.transform.position, new Vector3(sizeX * 2, sizeY * 2, 0));
             StartCoroutine(SpawnWaves());
         }
 
@@ -39,7 +52,7 @@ namespace usd.Enemies
                 UIManager.Instance.SetWaveNumber(currentWave);
                 Debug.Log($"Starting Wave {currentWave}");
                 yield return StartCoroutine(SpawnEnemies());
-                yield return new WaitForSeconds(5f); // Delay between waves
+                yield return new WaitForSeconds(delayBetweenWaves); // Delay between waves
             }
         }
 
@@ -62,11 +75,8 @@ namespace usd.Enemies
             GameObject enemyToSpawn = SelectEnemyPrefab();
 
             // Randomize spawn position within the defined area
-            Vector2 spawnPosition = new Vector2(
-                Random.Range(spawnAreaMin.x, spawnAreaMax.x),
-                Random.Range(spawnAreaMin.y, spawnAreaMax.y)
-            );
-
+            Vector3 spawnPosition = RandomUtils.RandomInRectangleBorder(ref spawnBounds);
+            spawnPosition.z = 0;
             Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
         }
 

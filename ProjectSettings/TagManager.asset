@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Upgrade
+  - Projectile_Lin
+  - Projectile_Cir
+  - Nmy
+  - Nmy_Projectile
   layers:
   - Default
   - TransparentFX

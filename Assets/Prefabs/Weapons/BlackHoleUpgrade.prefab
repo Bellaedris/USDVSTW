@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 8279367095312868926}
   - component: {fileID: 2123020758467099468}
   - component: {fileID: 92538531621435825}
+  - component: {fileID: 1193842516300931904}
   m_Layer: 0
   m_Name: BlackHoleUpgrade
   m_TagString: Upgrade
@@ -151,3 +152,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponID: 3
+--- !u!114 &1193842516300931904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6585106654912148602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b101ad6b3714f91ac33925485b6605e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

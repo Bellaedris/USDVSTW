@@ -51,24 +51,25 @@ namespace usd.Enemies
             RotateEntityTowardsPlayer(180.0f, 90.0f);
             
             // // Shoot if possible
-            if (limits.Contains(transform.position) && CanShoot())
+            if (!(transform.position.x > shootLimits.x && transform.position.x < -shootLimits.x && transform.position.y > shootLimits.y && transform.position.y < -shootLimits.y) 
+                && CanShoot())
             {
                 Shoot();
             }
-            else if (!limits.Contains(transform.position))
-            {
-                Destroy(gameObject);
-                spawnerReference.RemoveUnit(this);
-            }
+            // else if (!limits.Contains(transform.position))
+            // {
+            //     Destroy(gameObject);
+            //     spawnerReference.RemoveUnit(this);
+            // }
         }
         
         // Override take damage and die methods
-        
-        public new void TakeDamage(int damageTaken)
+        public new void TakeDamage(float damageTaken)
         {
             health -= damageTaken;
             if (health <= 0)
             {
+                // TODO animation
                 Destroy(gameObject);
                 spawnerReference.RemoveUnit(this);
             }
@@ -118,7 +119,6 @@ namespace usd.Enemies
             else
             { 
                 GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-                // Todo change sript to linear projectile enemy
                 projectile.GetComponent<NmyLinearProjectile>().speed = projectileSpeed;
                 projectile.GetComponent<NmyLinearProjectile>().damage = projectileDamage;
                 projectile.GetComponent<NmyLinearProjectile>().target = playerPosition;

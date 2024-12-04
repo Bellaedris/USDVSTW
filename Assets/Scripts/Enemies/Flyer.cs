@@ -32,7 +32,8 @@ namespace usd.Enemies
             RotateEntityTowardsDirection(180.0f, 90.0f, moveDirection);
 
             // // Shoot if possible
-            if (limits.Contains(transform.position) && CanShoot())
+            if (!(transform.position.x > shootLimits.x && transform.position.x < -shootLimits.x && transform.position.y > shootLimits.y && transform.position.y < -shootLimits.y) 
+                && CanShoot())
             {
                 Shoot();
             }
@@ -96,7 +97,6 @@ namespace usd.Enemies
             else
             {
                 GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-                // Todo change sript to linear projectile enemy
                 projectile.GetComponent<NmyLinearProjectile>().speed = projectileSpeed;
                 projectile.GetComponent<NmyLinearProjectile>().damage = projectileDamage;
                 projectile.GetComponent<NmyLinearProjectile>().target = playerPosition;

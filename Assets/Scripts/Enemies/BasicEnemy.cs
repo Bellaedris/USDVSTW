@@ -9,30 +9,38 @@ namespace usd.Enemies
     // Todo Abstract class
     public abstract class BasicEnemy : MonoBehaviour
     {
-        [SerializeField] public int health;
+        [Header("Enemy Stats")]
+        public float health;
+        public float movementSpeed;
+        public int projectileSpeed;
+        public int projectileDamage;
+        public float fireRate;
+        public float fireLineSize;
+        public int fireProjectilesCount;
+        public GameObject projectilePrefab;
+        [Header("Enemy Loot")]
+        public int scoreValue;
+        public List<GameObject> dropPrefab;
+        public List<float> dropRate;
         
-        [SerializeField] public Bounds limits;
-        [SerializeField] public float movementSpeed;
-        
-        [SerializeField] public int projectileSpeed;
-        [SerializeField] public int projectileDamage;
-        [SerializeField] public float fireRate;
-        [SerializeField] public float fireLineSize;
-        [SerializeField] public int fireProjectilesCount;
-        [SerializeField] public GameObject projectilePrefab;
-        
-        [SerializeField] public int scoreValue;
-        
-        // TODO Order refabs and droprates from highest to lowest
-        [SerializeField] public List<GameObject> dropPrefab;
-        [SerializeField] public List<float> dropRate;
+        private Camera _mainCamera;
+        [HideInInspector]
+        public Bounds limits;
+        [HideInInspector]
+        public Vector2 shootLimits;
         
         protected GameObject player;
         protected Vector3 playerPosition;
         protected float timeLastShot;
         void Start()
         {
-
+            _mainCamera = Camera.main;
+            float sizeY = _mainCamera.orthographicSize;
+            float sizeX = sizeY * _mainCamera.aspect;
+            limits = new Bounds(_mainCamera.transform.position, new Vector3(sizeX * 2, sizeY * 2, 0) + new Vector3(4.0f, 4.0f, 0));
+            sizeY = _mainCamera.orthographicSize;
+            sizeX = sizeY * _mainCamera.aspect;
+            shootLimits = new Vector2(sizeX + 1.0f, sizeY + 1.0f);
         }
 
         // Update is called once per frame
@@ -71,13 +79,21 @@ namespace usd.Enemies
             transform.rotation = Quaternion.Euler(x_offset, 0, -angle + z_offset);
         }
         
-        public void TakeDamage(int damageTaken)
+        public void TakeDamage(float damageTaken)
         {
-            health -= damageTaken;
-            if (health <= 0)
+            if (gameObject.GetComponent<SwarmUnit>() != null)
             {
-                Die();
-                // TODO +=scoreValue
+                gameObject.GetComponent<SwarmUnit>().TakeDamage(damageTaken);
+            }
+            else
+            {
+                health -= damageTaken;
+                if (health <= 0)
+                {
+                    Die();
+                    // TODO animation
+                    player.GetComponent<PlayerController>()._addScore(scoreValue);
+                }
             }
         }
 
@@ -85,11 +101,13 @@ namespace usd.Enemies
         {
             // Drop loot before death
             var hasDropped = false;
+            var dropRateCum = 0.0f;
             for (int i = 0; i < dropPrefab.Count; i++)
             {
-                if (Random.Range(0f, 1f) < dropRate[i] && !hasDropped)
+                dropRateCum += dropRate[i];
+                if (Random.Range(0f, 1f) < dropRateCum && !hasDropped)
                 {
-                    Instantiate(dropPrefab[i], transform.position, Quaternion.identity);
+                    Instantiate(dropPrefab[i], transform.position - Vector3.forward * 0.3f, Quaternion.identity);
                     hasDropped = true;
                 }
             }
