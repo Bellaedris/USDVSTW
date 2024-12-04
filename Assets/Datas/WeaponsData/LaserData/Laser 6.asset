@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34236fa135a13cb47bcf70e8537f7415, type: 3}
   m_Name: Laser 6
   m_EditorClassIdentifier: 
-  weaponProjectiles: 3
+  weaponProjectiles: 5
   projectileSpeed: 23
   projectileRange: 1
   projectileDuration: 1
-  projectileDamage: 140
+  projectileDamage: 150
   fireRate: 6
