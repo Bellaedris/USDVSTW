@@ -175,10 +175,10 @@ MonoBehaviour:
   rarestTankPrefab: {fileID: 1169059682551800298, guid: 4ed03f381ce3e1049beaa9f57f5e916f,
     type: 3}
   spawnInterval: 2
-  initialEnemiesPerWave: 4
-  waveIncreaseFactor: 1.2
+  initialEnemiesPerWave: 5
+  waveIncreaseFactor: 1.1
   maxEnemiesPerWave: 30
-  delayBetweenWaves: 6
+  delayBetweenWaves: 8
   background: {fileID: 368801418}
   spawnBounds:
     m_Center: {x: 0, y: 0, z: 0}
