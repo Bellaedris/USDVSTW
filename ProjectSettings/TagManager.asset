@@ -9,6 +9,7 @@ TagManager:
   - Projectile_Cir
   - Nmy
   - Nmy_Projectile
+  - Projectile_S
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Upgrade
   - 
   - 
   - 

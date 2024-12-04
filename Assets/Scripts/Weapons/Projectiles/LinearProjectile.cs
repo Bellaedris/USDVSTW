@@ -42,6 +42,10 @@ namespace usd.Weapons.Projectiles
             else if (other.CompareTag("Nmy_Projectile"))
             {
                 Destroy(other.gameObject);
+                if (CompareTag("Projectile_S"))
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
