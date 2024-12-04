@@ -147,18 +147,16 @@ namespace usd
             {
                 // change weapon to the one associated with the upgrade, then increment its level
                 var upgrade = other.GetComponent<Upgrade>();
-                _currentWeapon.gameObject.SetActive(false);
-                _currentWeapon = _weapons[upgrade.weaponID - 1];
-                _currentWeapon.gameObject.SetActive(true);
-                _currentWeapon.LevelUp();
-                // foreach (var weapon2 in _weapons)
-                // {
-                //     Debug.Log("ID : " + weapon2.weaponID + "--Cur lvl : " + weapon2._currentLevel);
-                // }
-                // Debug.Log("---------------------------------------------------------------------");
-                
-                UIManager.Instance.SwitchWeapon(upgrade.weaponID, _currentWeapon._currentLevel);
-                Destroy(other.gameObject);
+                if (!upgrade.hasBeenPickedUp)
+                {
+                    upgrade.hasBeenPickedUp = true;
+                    _currentWeapon.gameObject.SetActive(false);
+                    _currentWeapon = _weapons[upgrade.weaponID - 1];
+                    _currentWeapon.gameObject.SetActive(true);
+                    _currentWeapon.LevelUp();
+                    UIManager.Instance.SwitchWeapon(upgrade.weaponID, _currentWeapon._currentLevel);
+                    Destroy(other.gameObject);
+                }
             } 
             else if (other.CompareTag("Nmy_Projectile"))
             {
