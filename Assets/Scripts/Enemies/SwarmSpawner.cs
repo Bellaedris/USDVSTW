@@ -110,7 +110,10 @@ namespace usd.Enemies
         
         void Update()
         {
-            transform.position += moveDirection * movementSpeed * Time.deltaTime;
+            if (player == null)
+                return;
+            
+            transform.position += moveDirection * (movementSpeed * Time.deltaTime);
             
             if(transform.position.x > shootLimits.x || transform.position.x < -shootLimits.x || transform.position.y > shootLimits.y || transform.position.y < -shootLimits.y)
                 CalculateRandomDirection();

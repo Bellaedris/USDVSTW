@@ -22,11 +22,13 @@ namespace usd
         public Slider blackHoleLevelSlider;
 
         public GameObject pauseUI;
+        public GameObject gameOverUI;
         
         private static UIManager _instance;
         
         private bool _isPaused;
         private float _timeScale;
+        private bool _isGameOver;
         
         public static UIManager Instance => _instance;
 
@@ -94,6 +96,9 @@ namespace usd
 
         public void TogglePauseMenu()
         {
+            if (_isGameOver)
+                return;
+            
             // we set the time scale to zero to fake pause the game
             if (!_isPaused)
                 Time.timeScale = 0;
@@ -108,6 +113,29 @@ namespace usd
             laserLevelSlider.value = (laserLevel + 1) / 6f;
             gatlingLevelSlider.value = (gatlingLevel + 1) / 6f;
             blackHoleLevelSlider.value = (blackHoleLevel + 1) / 6f;
+        }
+
+        public void UpdateMusicVolume(float volume)
+        {
+            AudioManager.Instance.UpdateMasterVolume(volume);
+        }
+        
+        public void UpdateSfxVolume(float volume)
+        {
+            AudioManager.Instance.UpdateSfxVolume(volume);
+        }
+        
+        public void ShowGameOver()
+        {
+            // delete all enemies on the map? 
+            _isGameOver = true;
+            StartCoroutine(waitBeforeShowingDeathUI());
+        }
+
+        IEnumerator waitBeforeShowingDeathUI()
+        {
+            yield return new WaitForSeconds(1f);
+            gameOverUI.SetActive(true);
         }
     }
 }

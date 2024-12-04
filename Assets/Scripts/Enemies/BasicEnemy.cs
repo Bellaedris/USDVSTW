@@ -22,6 +22,9 @@ namespace usd.Enemies
         public int scoreValue;
         public List<GameObject> dropPrefab;
         public List<float> dropRate;
+        [Header("Misc")] 
+        public GameObject deathParticles;
+        public AudioClip deathSound;
         
         private Camera _mainCamera;
         [HideInInspector]
@@ -106,6 +109,8 @@ namespace usd.Enemies
         {
             yield return DropLoot();
             Destroy(gameObject);
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
+            AudioManager.Instance.playGeneralSound(deathSound);
         }
         
         private IEnumerator DropLoot()

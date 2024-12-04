@@ -58,7 +58,7 @@ namespace usd.Weapons
                 // Shoot();
                 if (isEnemyOnScreen())
                 {
-                    _audioManager.playPlayerSound(sound);
+                    _audioManager.playWeaponSound(sound);
                     Shoot(); 
                 }
                 yield return new WaitForSeconds(1f / upgrades[_currentLevel].fireRate);
@@ -73,7 +73,6 @@ namespace usd.Weapons
             _currentLevel = _currentLevel > 5 ? 5 : _currentLevel;
             // restart the coroutine to resume shooting
             StartCoroutine(ShootOnCooldown());
-            // Shoot();
         }
     }
 }
