@@ -85,6 +85,7 @@ namespace usd
                     score = Math.Max(0, score - 1000);
                     UIManager.Instance.DisplayScore(score);
                     _DowngradeWeapons();
+                    AudioManager.Instance.FadeMusic(_currentWeapon.weaponID, _currentWeapon._currentLevel);
                 }
             }
         }
@@ -122,6 +123,7 @@ namespace usd
             _meshRenderer = GetComponent<MeshRenderer>();
             _currentWeapon = _weapons[Random.Range(0, _weapons.Length)];
             _currentWeapon.gameObject.SetActive(true);
+            AudioManager.Instance.FadeMusic(_currentWeapon.weaponID, _currentWeapon._currentLevel);
             UIManager.Instance.SwitchWeapon(_currentWeapon.weaponID, _currentWeapon._currentLevel);
 
             float sizeY = _mainCamera.orthographicSize;
@@ -175,6 +177,7 @@ namespace usd
                     _currentWeapon.LevelUp();
                     UIManager.Instance.SwitchWeapon(id, _currentWeapon._currentLevel);
                     AudioManager.Instance.playGeneralSound(upgradeSound);
+                    AudioManager.Instance.FadeMusic(_currentWeapon.weaponID, _currentWeapon._currentLevel);
                 }
             } 
             else if (other.CompareTag("Nmy_Projectile"))
