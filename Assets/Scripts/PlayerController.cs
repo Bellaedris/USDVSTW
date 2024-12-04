@@ -61,7 +61,6 @@ namespace usd
         {
             if (canBeHit)
             {      
-                Debug.Log("Hit registered");
                 if (CheckGameOver())
                 {
                     //TODO Game Manager call game over
