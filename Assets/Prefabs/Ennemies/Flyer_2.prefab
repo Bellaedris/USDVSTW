@@ -20,6 +20,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6695760680716414631, guid: 0997ea3d17cc5764f8173ab62ce92362,
         type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c2926bea3d83a074fb8e054444a2449e, type: 3}
+    - target: {fileID: -6695760680716414631, guid: 0997ea3d17cc5764f8173ab62ce92362,
+        type: 3}
       propertyPath: scoreValue
       value: 200
       objectReference: {fileID: 0}
@@ -28,6 +33,12 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: -6695760680716414631, guid: 0997ea3d17cc5764f8173ab62ce92362,
+        type: 3}
+      propertyPath: deathParticles
+      value: 
+      objectReference: {fileID: 2377741972714469437, guid: 8208f7fc7b941c84283e982272bc7fe5,
+        type: 3}
     - target: {fileID: 3812924737173742217, guid: 0997ea3d17cc5764f8173ab62ce92362,
         type: 3}
       propertyPath: m_Center.z

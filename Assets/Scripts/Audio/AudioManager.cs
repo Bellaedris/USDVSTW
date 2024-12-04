@@ -76,7 +76,7 @@ namespace usd
                 StartCoroutine(crossFade(_bgm[_playingBgm], _bgm[3], 1f));
                 _playingBgm = 3;
             }
-            else if (level == 5)
+            else if (level == 5 && _playingBgm != 4)
             {
                 StartCoroutine(crossFade(_bgm[_playingBgm], _bgm[4], 1f));
                 _playingBgm = 4;
