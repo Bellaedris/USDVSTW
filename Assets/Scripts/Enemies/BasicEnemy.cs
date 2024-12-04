@@ -88,6 +88,9 @@ namespace usd.Enemies
         
         public void TakeDamage(float damageTaken)
         {
+            if (_isGameOver)
+                return;
+            
             if (gameObject.GetComponent<SwarmUnit>() != null)
             {
                 gameObject.GetComponent<SwarmUnit>().TakeDamage(damageTaken);
