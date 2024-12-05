@@ -37,6 +37,8 @@ namespace usd
         
         private bool _isPaused;
         private float _timeScale;
+        public float _GetTimeScale() => _timeScale;
+        
         private bool _isGameOver;
         
         public static UIManager Instance => _instance;
@@ -50,8 +52,9 @@ namespace usd
                 _instance = this;
             else
                 Destroy(gameObject);
-
-            _timeScale = Time.timeScale;
+            
+            if (Time.timeScale != 0)
+                _timeScale = Time.timeScale;
         }
 
         private void OnGUI()
@@ -112,13 +115,22 @@ namespace usd
         {
             // do nothing if the game is over, there is a menu already
             if (_isGameOver)
+            {
+                AudioManager.Instance.FadeInMusicMenu();
                 return;
+            }
             
             // we set the time scale to zero to fake pause the game
             if (!_isPaused)
+            {
+                AudioManager.Instance.FadeInMusicMenu();
                 Time.timeScale = 0;
+            }
             else
+            {
+                AudioManager.Instance.FadeOutMusicMenu();
                 Time.timeScale = _timeScale;
+            }
             
             _isPaused = !_isPaused;
             pauseUI.SetActive(!pauseUI.activeSelf);

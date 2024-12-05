@@ -31,6 +31,8 @@ namespace usd.Enemies
         public Bounds limits;
         [HideInInspector]
         public Vector2 shootLimits;
+
+        private bool hasDied;
         
         protected GameObject player;
         protected Vector3 playerPosition;
@@ -48,6 +50,7 @@ namespace usd.Enemies
             sizeY = _mainCamera.orthographicSize;
             sizeX = sizeY * _mainCamera.aspect;
             shootLimits = new Vector2(sizeX + 1.0f, sizeY + 1.0f);
+            hasDied = false;
         }
 
         // Update is called once per frame
@@ -100,9 +103,10 @@ namespace usd.Enemies
                 health -= damageTaken;
                 if (health <= 0)
                 {
+                    if (!hasDied)
+                        player.GetComponent<PlayerController>()._addScore(scoreValue);
+                    hasDied = true;
                     Die();
-                    // TODO animation
-                    player.GetComponent<PlayerController>()._addScore(scoreValue);
                 }
             }
         }

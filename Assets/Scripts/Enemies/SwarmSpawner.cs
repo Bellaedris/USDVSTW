@@ -148,8 +148,13 @@ namespace usd.Enemies
                 }
             }
             // TODO animation
-            player.GetComponent<PlayerController>()._addScore(scoreValue);
             Destroy(gameObject);
+            player.GetComponent<PlayerController>()._addScore(scoreValue);
+        }
+        
+        public new void TakeDamage(float damageTaken)
+        {
+            return;
         }
     }
 }
