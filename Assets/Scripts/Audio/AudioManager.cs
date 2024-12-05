@@ -6,10 +6,16 @@ using UnityEngine.Serialization;
 
 namespace usd
 {
+    /// <summary>
+    /// Manages audio for the game, including background music, sound effects, and volume control.
+    /// </summary>
     public class AudioManager : MonoBehaviour
     {
         private static AudioManager _instance;
 
+        /// <summary>
+        /// Singleton instance of the AudioManager.
+        /// </summary>
         public static AudioManager Instance => _instance;
         
         public AudioMixer masterVolume;
@@ -17,15 +23,13 @@ namespace usd
         
         private AudioSource _playerSource;
         private AudioSource _enemiesSource;
-        // okay this is ugly but we want smooth transitions between contextual musics
-        // and we don't have fmod or wwise
         private AudioSource[] _bgm; // holds music for laser/gatling/blackHole/criticalHP/maxHP
         private int _playingBgm;
         private int _lastBgm;
         
         void Awake()
         {
-            //singleton
+            // Singleton pattern implementation
             if(_instance == null)
             {
                 _instance = this;
@@ -39,18 +43,18 @@ namespace usd
             _enemiesSource = sources[1];
 
             _bgm = new AudioSource[6];
-            _bgm[0] = sources[2]; //laser
-            _bgm[1] = sources[3]; //gatling
-            _bgm[2] = sources[4]; //blackhole
-            _bgm[3] = sources[5]; //criticalhealth
-            _bgm[4] = sources[6]; //maxhealth
-            _bgm[5] = sources[7]; //menu and between waves
+            _bgm[0] = sources[2]; // laser
+            _bgm[1] = sources[3]; // gatling
+            _bgm[2] = sources[4]; // blackhole
+            _bgm[3] = sources[5]; // critical health
+            _bgm[4] = sources[6]; // max health
+            _bgm[5] = sources[7]; // menu and between waves
         }
 
         /// <summary>
-        /// Interpolate between a minimal and maximal sound volume on the master audio mixer
+        /// Interpolates between a minimal and maximal sound volume on the master audio mixer.
         /// </summary>
-        /// <param name="value">callback from the slider value: something between 0 and 1</param>
+        /// <param name="value">Callback from the slider value: something between 0 and 1.</param>
         public void UpdateMasterVolume(float value)
         {
             float newVolume = Mathf.Lerp(-40f, 20f, value);
@@ -58,9 +62,9 @@ namespace usd
         }
         
         /// <summary>
-        /// Same as UpdateMasterVolume, but applied to the SFX audio mixer
+        /// Same as UpdateMasterVolume, but applied to the SFX audio mixer.
         /// </summary>
-        /// <param name="value">callback from the slider value: something between 0 and 1</param>
+        /// <param name="value">Callback from the slider value: something between 0 and 1.</param>
         public void UpdateSfxVolume(float value)
         {
             float newVolume = Mathf.Lerp(-40f, 20f, value);
@@ -68,20 +72,18 @@ namespace usd
         }
 
         /// <summary>
-        /// Play a once shot sound on the player audio source. Called by the player weapons. 
-        /// The sources are splitted since the weapons sounds are very present and would kind of overwhelm a single audio sources
+        /// Plays a one-shot sound on the player audio source. Called by the player weapons.
         /// </summary>
-        /// <param name="clip">the sound to play</param>
+        /// <param name="clip">The sound to play.</param>
         public void playWeaponSound(AudioClip clip)
         {
             _playerSource.PlayOneShot(clip);
         }
         
         /// <summary>
-        /// Play a once shot sound on the weapons audio source. Called by the player himself and the enemies. 
-        /// This audio source manages SFX that are called less often than the weapon sounds.
+        /// Plays a one-shot sound on the general audio source. Called by the player and enemies.
         /// </summary>
-        /// <param name="clip">the sound to play</param>
+        /// <param name="clip">The sound to play.</param>
         public void playGeneralSound(AudioClip clip)
         {
             _enemiesSource.PlayOneShot(clip);
@@ -89,46 +91,41 @@ namespace usd
 
         /// <summary>
         /// Fades the current music track out and fades the new music in.
-        /// The IDs correspond to:
-        /// - 0 : laser weapon music
-        /// - 1 : gatling music
-        /// - 2 : black hole music
-        /// - 3 : low health music
-        /// - 4 : high health music
-        /// - 5 : between waves and menu music
         /// </summary>
-        /// <param name="newWeaponID">ID of the weapon currently equipped</param>
-        /// <param name="level">level of the weapon currently equipped</param>
-        /// <param name="maxWeaponLevel">max level of all weapons</param>
+        /// <param name="newWeaponID">ID of the weapon currently equipped.</param>
+        /// <param name="level">Level of the weapon currently equipped.</param>
+        /// <param name="maxWeaponLevel">Max level of all weapons.</param>
         public void FadeMusic(int newWeaponID, int level, int maxWeaponLevel)
         {
-            // do nothing if the weapon didn't change
+            // Do nothing if the weapon didn't change
             if (newWeaponID == _playingBgm && level > 0 && level < 5)
                 return;
             if (maxWeaponLevel == 0)
             {
-                // Kill all other coroutines of the same type
                 StopAllCoroutines();
                 StartCoroutine(crossFade(_bgm[_playingBgm], _bgm[3], 2f));
                 _playingBgm = 3;
             }
             else if (level == 5 && _playingBgm != 4)
             {
-                // Kill all other coroutines of the same type
                 StopAllCoroutines();
                 StartCoroutine(crossFade(_bgm[_playingBgm], _bgm[4], 2f));
                 _playingBgm = 4;
             }
             else if (!(level == 5 && _playingBgm == 4))
             {
-                // Kill all other coroutines of the same type
                 StopAllCoroutines();
                 StartCoroutine(crossFade(_bgm[_playingBgm], _bgm[newWeaponID], 2f));
                 _playingBgm = newWeaponID;
             }
-            
         }
 
+        /// <summary>
+        /// Crossfades between two audio sources over a specified duration.
+        /// </summary>
+        /// <param name="from">The audio source to fade out.</param>
+        /// <param name="to">The audio source to fade in.</param>
+        /// <param name="fadeTime">The duration of the fade.</param>
         private IEnumerator crossFade(AudioSource from, AudioSource to, float fadeTime)
         {
             // Kills all other music
@@ -138,7 +135,7 @@ namespace usd
                     source.volume = 0f;
             }
             
-            // linearly interpolate volume in and out
+            // Linearly interpolate volume in and out
             float elapsed = 0f;
             while (elapsed < fadeTime)
             {
@@ -151,23 +148,33 @@ namespace usd
             yield return null;
         }
         
+        /// <summary>
+        /// Fades in the menu music.
+        /// </summary>
         public void FadeInMusicMenu()
         {
-            // Kill all other coroutines of the same type
             StopAllCoroutines();
             StartCoroutine(crossFadeMenu(_bgm[_playingBgm], _bgm[5], 2f));
             _lastBgm = _playingBgm;
             _playingBgm = 5;
         }
         
+        /// <summary>
+        /// Fades out the menu music.
+        /// </summary>
         public void FadeOutMusicMenu()
         {
-            // Kill all other coroutines of the same type
             StopAllCoroutines();
             StartCoroutine(crossFadeMenu(_bgm[5], _bgm[_lastBgm], 2f));
             _playingBgm = _lastBgm;
         }
         
+        /// <summary>
+        /// Crossfades between two audio sources over a specified duration for menu music.
+        /// </summary>
+        /// <param name="from">The audio source to fade out.</param>
+        /// <param name="to">The audio source to fade in.</param>
+        /// <param name="fadeTime">The duration of the fade.</param>
         private IEnumerator crossFadeMenu(AudioSource from, AudioSource to, float fadeTime)
         {
             // Kills all other music
@@ -177,7 +184,7 @@ namespace usd
                     source.volume = 0f;
             }
             
-            // linearly interpolate volume in and out
+            // Linearly interpolate volume in and out
             float elapsed = 0f;
             while (elapsed < fadeTime)
             {
@@ -190,17 +197,21 @@ namespace usd
             yield return null;
         }
         
+        /// <summary>
+        /// Fades in the max health music.
+        /// </summary>
         public void FadeMusicMax()
         {
-            // Kill all other coroutines of the same type
             StopAllCoroutines();
             StartCoroutine(crossFadeMenu(_bgm[_playingBgm], _bgm[4], 2f));
             _playingBgm = 4;
         }
         
+        /// <summary>
+        /// Fades in the base health music.
+        /// </summary>
         public void FadeMusicBase()
         {
-            // Kill all other coroutines of the same type
             StopAllCoroutines();
             StartCoroutine(crossFadeMenu(_bgm[_playingBgm], _bgm[3], 2f));
             _playingBgm = 3;
