@@ -107,9 +107,9 @@ namespace usd
             // Blink invulnerabilityLength seconds
             while (Time.time - hitTime < invulnerabilityLength)
             {
-                _meshRenderer.enabled = false;
+                GetComponentInChildren<MeshRenderer>().enabled = false;
                 yield return new WaitForSeconds(0.1f);
-                _meshRenderer.enabled = true;
+                GetComponentInChildren<MeshRenderer>().enabled = true;
                 yield return new WaitForSeconds(0.1f);
             }
             canBeHit = true;
