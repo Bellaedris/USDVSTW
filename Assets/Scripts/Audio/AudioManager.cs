@@ -125,6 +125,12 @@ namespace usd
 
         private IEnumerator crossFade(AudioSource from, AudioSource to, float fadeTime)
         {
+            foreach (AudioSource source in _bgm)
+            {
+                if (source != from && source != to)
+                    source.volume = 0f;
+            }
+            
             // linearly interpolate volume in and out
             float elapsed = 0f;
             while (elapsed < fadeTime)
@@ -153,6 +159,12 @@ namespace usd
         
         private IEnumerator crossFadeMenu(AudioSource from, AudioSource to, float fadeTime)
         {
+            foreach (AudioSource source in _bgm)
+            {
+                if (source != from && source != to)
+                    source.volume = 0f;
+            }
+            
             // linearly interpolate volume in and out
             float elapsed = 0f;
             while (elapsed < fadeTime)
