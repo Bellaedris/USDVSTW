@@ -155,7 +155,7 @@ namespace usd
         {
             // Kill all other coroutines of the same type
             StopAllCoroutines();
-            StartCoroutine(crossFadeMenu(_bgm[_playingBgm], _bgm[5], 1f));
+            StartCoroutine(crossFadeMenu(_bgm[_playingBgm], _bgm[5], 2f));
             _lastBgm = _playingBgm;
             _playingBgm = 5;
         }
@@ -164,7 +164,7 @@ namespace usd
         {
             // Kill all other coroutines of the same type
             StopAllCoroutines();
-            StartCoroutine(crossFadeMenu(_bgm[5], _bgm[_lastBgm], 1f));
+            StartCoroutine(crossFadeMenu(_bgm[5], _bgm[_lastBgm], 2f));
             _playingBgm = _lastBgm;
         }
         

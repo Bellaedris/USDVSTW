@@ -113,20 +113,22 @@ namespace usd.Enemies
 
         public void Die()
         {
-            StartCoroutine(DieCoroutine());
+            // StartCoroutine(DieCoroutine());
+            DieWithParticles();
         }
         
-        private IEnumerator DieCoroutine()
+        private void DieWithParticles()
         {
-            yield return DropLoot();
+            // yield return DropLoot();
+            DropLoot();
             Destroy(gameObject);
             Instantiate(deathParticles, transform.position, Quaternion.identity);
             AudioManager.Instance.playGeneralSound(deathSound);
         }
         
-        private IEnumerator DropLoot()
+        private void DropLoot()
         {
-            yield return new WaitForSeconds(0.75f);
+            // yield return new WaitForSeconds(0.75f);
             // Drop loot before death
             var hasDropped = false;
             var dropRateCum = 0.0f;
