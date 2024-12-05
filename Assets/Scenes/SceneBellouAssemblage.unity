@@ -1597,7 +1597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  invulnerabilityLength: 1
+  invulnerabilityLength: 2
   upgradeSound: {fileID: 8300000, guid: 20c30033e36c5ad47b68e9bedb8339c2, type: 3}
   damageSound: {fileID: 8300000, guid: e71cc94cf466aaa488d210d74e6b9bc1, type: 3}
   deathSound: {fileID: 8300000, guid: c2926bea3d83a074fb8e054444a2449e, type: 3}
