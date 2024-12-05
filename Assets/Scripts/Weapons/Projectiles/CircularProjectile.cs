@@ -18,7 +18,7 @@ namespace usd.Weapons.Projectiles
         
         void Update()
         {
-            //the projectile manages its lifetime by itself
+            // The projectile manages its lifetime by itself
             lifetime -= Time.deltaTime;
             if(lifetime < 0)
                 Destroy(gameObject);
@@ -28,7 +28,6 @@ namespace usd.Weapons.Projectiles
         {
             if (other.CompareTag("Nmy"))
             {
-                //TODO trigger enemy hit animation
                 other.GetComponent<BasicEnemy>().TakeDamage(damage);
             }
             else if (other.CompareTag("Nmy_Projectile"))
