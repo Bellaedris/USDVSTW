@@ -37,12 +37,13 @@ namespace usd
             _playerSource = sources[0];
             _enemiesSource = sources[1];
 
-            _bgm = new AudioSource[5];
+            _bgm = new AudioSource[6];
             _bgm[0] = sources[2]; //laser
             _bgm[1] = sources[3]; //gatling
             _bgm[2] = sources[4]; //blackhole
             _bgm[3] = sources[5]; //criticalhealth
             _bgm[4] = sources[6]; //maxhealth
+            _bgm[5] = sources[7]; //menu and between waves
         }
 
         /// <summary>
@@ -93,27 +94,29 @@ namespace usd
         /// - 2 : black hole music
         /// - 3 : low health music
         /// - 4 : high health music
+        /// - 5 : between waves and menu music
         /// </summary>
         /// <param name="newWeaponID">ID of the weapon currently equipped</param>
         /// <param name="level">level of the weapon currently equipped</param>
-        public void FadeMusic(int newWeaponID, int level)
+        /// <param name="maxWeaponLevel">max level of all weapons</param>
+        public void FadeMusic(int newWeaponID, int level, int maxWeaponLevel)
         {
             // do nothing if the weapon didn't change
-            if (newWeaponID == _playingBgm && level > 0)
+            if (newWeaponID == _playingBgm && level > 0 && level < 5)
                 return;
-            if (level == 0)
+            if (maxWeaponLevel == 0)
             {
-                StartCoroutine(crossFade(_bgm[_playingBgm], _bgm[3], 1f));
+                StartCoroutine(crossFade(_bgm[_playingBgm], _bgm[3], 2f));
                 _playingBgm = 3;
             }
             else if (level == 5 && _playingBgm != 4)
             {
-                StartCoroutine(crossFade(_bgm[_playingBgm], _bgm[4], 1f));
+                StartCoroutine(crossFade(_bgm[_playingBgm], _bgm[4], 2f));
                 _playingBgm = 4;
             }
-            else
+            else if (!(level == 5 && _playingBgm == 4))
             {
-                StartCoroutine(crossFade(_bgm[_playingBgm], _bgm[newWeaponID], 1f));
+                StartCoroutine(crossFade(_bgm[_playingBgm], _bgm[newWeaponID], 2f));
                 _playingBgm = newWeaponID;
             }
             
@@ -128,6 +131,7 @@ namespace usd
                 elapsed += Time.deltaTime;
                 from.volume = Mathf.Lerp(.6f, 0f, elapsed / fadeTime);
                 to.volume = Mathf.Lerp(0f, .6f, elapsed / fadeTime);
+                
                 yield return null;
             }
 

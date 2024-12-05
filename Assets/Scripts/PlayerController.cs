@@ -85,9 +85,20 @@ namespace usd
                     score = Math.Max(0, score - 1000);
                     UIManager.Instance.DisplayScore(score);
                     _DowngradeWeapons();
-                    AudioManager.Instance.FadeMusic(_currentWeapon.weaponID, _currentWeapon._currentLevel);
+                    AudioManager.Instance.FadeMusic(_currentWeapon.weaponID - 1, _currentWeapon._currentLevel, GetMaxWeaponLevel());
                 }
             }
+        }
+
+        private int GetMaxWeaponLevel()
+        {
+            int maxWeaponLevel = - 1;
+            foreach (Weapon w in _weapons)
+            {
+                maxWeaponLevel = Math.Max(w._currentLevel, maxWeaponLevel);
+            }
+
+            return maxWeaponLevel;
         }
         
         public bool CheckGameOver()
@@ -123,7 +134,7 @@ namespace usd
             _meshRenderer = GetComponent<MeshRenderer>();
             _currentWeapon = _weapons[Random.Range(0, _weapons.Length)];
             _currentWeapon.gameObject.SetActive(true);
-            AudioManager.Instance.FadeMusic(_currentWeapon.weaponID, _currentWeapon._currentLevel);
+            AudioManager.Instance.FadeMusic(_currentWeapon.weaponID - 1, _currentWeapon._currentLevel, GetMaxWeaponLevel());
             UIManager.Instance.SwitchWeapon(_currentWeapon.weaponID, _currentWeapon._currentLevel);
 
             float sizeY = _mainCamera.orthographicSize;
@@ -178,7 +189,7 @@ namespace usd
                     _currentWeapon.LevelUp();
                     UIManager.Instance.SwitchWeapon(id, _currentWeapon._currentLevel);
                     AudioManager.Instance.playGeneralSound(upgradeSound);
-                    AudioManager.Instance.FadeMusic(_currentWeapon.weaponID, _currentWeapon._currentLevel);
+                    AudioManager.Instance.FadeMusic(_currentWeapon.weaponID - 1, _currentWeapon._currentLevel, GetMaxWeaponLevel());
                 }
             } 
             else if (other.CompareTag("Nmy_Projectile"))
