@@ -1,20 +1,29 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using usd.Weapons.Projectiles;
 
 namespace usd.Weapons
 {
+    /// <summary>
+    /// Represents a circular weapon that shoots projectiles in a circular pattern
+    /// </summary>
     public class Circular : Weapon
     {
+        /// <summary>
+        /// List of projectiles instantiated by this weapon
+        /// </summary>
         private List<GameObject> _projectiles;
-
+        
         private void Awake()
         {
+            // Initializes the weapon and its projectiles list.
+
             _projectiles = new List<GameObject>();
         }
 
+        /// <summary>
+        /// Shoots projectiles in a circular pattern based on the current upgrade level.
+        /// </summary>
         public override void Shoot()
         {
             int projCount = upgrades[_currentLevel].weaponProjectiles;
@@ -39,7 +48,7 @@ namespace usd.Weapons
 
         private void Update()
         {
-            // the weapon manages the projectiles movement
+            // Updates the weapon's state, rotating the projectiles around the weapon
             transform.Rotate(Vector3.forward, Time.deltaTime * upgrades[_currentLevel].projectileSpeed);
         }
     }

@@ -10,6 +10,7 @@ namespace usd.Weapons
     {
         public override void Shoot()
         {
+            // Shoots a number of projectiles in a straight line based on the current upgrade level
             float spawnOffset = 1f / (upgrades[_currentLevel].weaponProjectiles + 1f);
             for (int i = 0; i < upgrades[_currentLevel].weaponProjectiles; i++)
             {

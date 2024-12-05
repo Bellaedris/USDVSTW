@@ -4,24 +4,54 @@ using UnityEngine;
 namespace usd.Weapons
 {
     /// <summary>
-    /// Generic weapon
+    /// Generic weapon abstract class
     /// </summary>
     public abstract class Weapon : MonoBehaviour
     {
+        /// <summary>
+        /// Sound effect for the weapon
+        /// </summary>
         public AudioClip sound;
+
+        /// <summary>
+        /// Unique identifier for the weapon
+        /// </summary>
         public int weaponID;
+
+        /// <summary>
+        /// Prefab for the projectile fired by the weapon
+        /// </summary>
         public GameObject projectilePrefab;
+
         /// <summary>
         /// WeaponLevel is an array of scriptable object containing the data of all of the weapon's levels
         /// </summary>
         public WeaponLevel[] upgrades;
+
+        /// <summary>
+        /// Current level of the weapon
+        /// </summary>
         public int _currentLevel;
 
+        /// <summary>
+        /// Limits of the player's movement area
+        /// </summary>
         private Vector2 _playerLimits;
+
+        /// <summary>
+        /// Reference to the main camera
+        /// </summary>
         private Camera _mainCamera;
-        
+
+        /// <summary>
+        /// Reference to the audio manager
+        /// </summary>
         private AudioManager _audioManager;
-        
+
+        /// <summary>
+        /// Checks if any enemies are currently on the screen.
+        /// </summary>
+        /// <returns>True if an enemy is on the screen, otherwise false.</returns>
         private bool isEnemyOnScreen()
         {
             // get all enemies and see if they are into the camera view
@@ -45,19 +75,28 @@ namespace usd.Weapons
             float sizeX = sizeY * _mainCamera.aspect;
             _playerLimits = new Vector2(sizeX, sizeY);
             
+            // Shooting Coroutine
             StartCoroutine(ShootOnCooldown());
         }
 
+        /// <summary>
+        /// Downgrades the weapon to the previous level
+        /// </summary>
         public void _Downgrade()
         {
             if (_currentLevel > 0)
                 _currentLevel--;
-            
         }
-        
+
+        /// <summary>
+        /// Abstract method to shoot the weapon. Must be implemented by derived classes
+        /// </summary>
         public abstract void Shoot();
 
-        // constantly shoot the weapon at its fire rate frequency.
+        /// <summary>
+        /// Coroutine to constantly shoot the weapon at its fire rate frequency
+        /// </summary>
+        /// <returns>An IEnumerator for the coroutine.</returns>
         protected IEnumerator ShootOnCooldown()
         {
             while (true)
@@ -72,6 +111,9 @@ namespace usd.Weapons
             }
         }
 
+        /// <summary>
+        /// Levels up the weapon to the next level
+        /// </summary>
         public void LevelUp()
         {
             _currentLevel++;

@@ -8,10 +8,14 @@ namespace usd.Weapons
     /// </summary>
     public class Radial : Weapon
     {
+        /// <summary>
+        ///  The shooting radius
+        /// </summary>
         public float shootRadius = 60f;
         
         public override void Shoot()
         {
+            // Shoots a number of projectiles in a fan pattern based on the current upgrade level
             int projCount = upgrades[_currentLevel].weaponProjectiles;
             float angleOffset = shootRadius / (projCount + 1f);
             float startAngle = -shootRadius / 2f;
