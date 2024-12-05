@@ -6,19 +6,48 @@ using Random = UnityEngine.Random;
 
 namespace usd.Enemies
 {
+    /// <summary>
+    /// Spawns and manages a swarm of enemy units
+    /// </summary>
     public class SwarmSpawner : BasicEnemy
     {
+        /// <summary>
+        /// The number of units in the swarm
+        /// </summary>
         public int numberOfUnits;
+
+        /// <summary>
+        /// The prefab for the swarm units
+        /// </summary>
         public GameObject unitPrefab;
         
+        /// <summary>
+        /// The list of swarm units
+        /// </summary>
         private List<GameObject> swarmUnits;
+
+        /// <summary>
+        /// The current movement direction of the swarm
+        /// </summary>
         private Vector3 moveDirection;
+
+        /// <summary>
+        /// Indicates whether the spawner has dropped loot
+        /// </summary>
         private bool hasDropped;
+
+        /// <summary>
+        /// Gets the current movement direction of the swarm
+        /// </summary>
+        /// <returns>The current movement direction.</returns>
         public Vector3 GetMoveDirection()
         {
             return moveDirection;
         }
 
+        /// <summary>
+        /// Calculates a random direction for the swarm to move in
+        /// </summary>
         public void CalculateRandomDirection()
         {
             if (_isGameOver)
@@ -65,6 +94,10 @@ namespace usd.Enemies
             }
         }
         
+        /// <summary>
+        /// Removes a unit from the swarm.
+        /// </summary>
+        /// <param name="swarmUnit">The swarm unit to remove.</param>
         public void RemoveUnit(SwarmUnit swarmUnit)
         {
             swarmUnits.Remove(swarmUnit.gameObject);
@@ -73,6 +106,8 @@ namespace usd.Enemies
         
         void Start()
         {            
+            // Initializes the swarm spawner and spawns the swarm units
+            
             // Difficulty scaling every 5 waves
             int difficultyModifier = UIManager.Instance.difficultyModifier;
             if (difficultyModifier > 0)
@@ -119,6 +154,8 @@ namespace usd.Enemies
         
         void Update()
         {
+            // Updates the swarm spawner's state
+
             if (_isGameOver)
                 return;
             
@@ -134,6 +171,9 @@ namespace usd.Enemies
             }
         }
 
+        /// <summary>
+        /// Handles the death of the spawner and drops loot.
+        /// </summary>
         void SpawnerDieAndDrop()
         {
             // Drop loot before death
@@ -147,11 +187,14 @@ namespace usd.Enemies
                     hasDropped = true;
                 }
             }
-            // TODO animation
             Destroy(gameObject);
             player.GetComponent<PlayerController>()._addScore(scoreValue);
         }
         
+        /// <summary>
+        /// Overrides the TakeDamage method to prevent the spawner from triggering taking damage events
+        /// </summary>
+        /// <param name="damageTaken">The amount of damage taken.</param>
         public new void TakeDamage(float damageTaken)
         {
             return;

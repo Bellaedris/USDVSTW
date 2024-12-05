@@ -4,11 +4,17 @@ using usd.Enemies.Projectiles;
 
 namespace usd.Enemies
 {
+    /// <summary>
+    /// Represents a chaser enemy that follows the player and shoots projectiles.
+    /// </summary>
     public class Chaser : BasicEnemy
     {
         void Start()
         {
-            // Difficulty scalign every 5 waves
+            // Initializes the chaser enemy, setting its difficulty and initial state.
+
+            
+            // Difficulty scaling every 5 waves
             int difficultyModifier = UIManager.Instance.difficultyModifier;
             if (difficultyModifier > 0)
             {
@@ -29,9 +35,11 @@ namespace usd.Enemies
             if (_uiManager != null)
                 _uiManager.gameOver += OnGameOver;
         }
-        
+
         void Update()
         {
+            // Updates the chaser enemy's state, moving towards the player and shooting if possible.
+            
             if (_isGameOver)
                 return;
             
@@ -40,25 +48,25 @@ namespace usd.Enemies
             
             // Move towards player
             Move();
+            
             // Look at player
             RotateEntityTowardsPlayer(180.0f, 90.0f);
             
-            // // Shoot if possible
+            // Shoot if possible
             if (!(transform.position.x > shootLimits.x && transform.position.x < -shootLimits.x && transform.position.y > shootLimits.y && transform.position.y < -shootLimits.y) 
                 && CanShoot())
             {
                 Shoot();
             }
-            // else if (!limits.Contains(transform.position))
-            // {
-            //     Destroy(gameObject);
-            // }
         }
         
-        // Specific Methods
+        /// <summary>
+        /// Determines whether the chaser enemy can shoot.
+        /// </summary>
+        /// <returns>True if the chaser enemy can shoot, otherwise false</returns>
         public override bool CanShoot()
         {
-            if (timeLastShot >= 1.0f/fireRate)
+            if (timeLastShot >= 1.0f / fireRate)
             {
                 timeLastShot = 0.0f;
                 return true;
@@ -67,9 +75,12 @@ namespace usd.Enemies
             return false;
         }
         
+        /// <summary>
+        /// Causes the chaser enemy to shoot projectiles towards the player
+        /// </summary>
         public override void Shoot()
         {   
-            //Todo maybe remove fireLine for basic nmy
+            // Todo maybe remove fireLine for basic enemy
             if (fireLineSize > 0 && fireProjectilesCount > 1)
             {
                 Vector3 fireDirection = playerPosition - transform.position;
@@ -105,6 +116,9 @@ namespace usd.Enemies
             }
         }
 
+        /// <summary>
+        /// Moves the chaser enemy towards the player
+        /// </summary>
         public override void Move()
         {
             Vector3 newPosition = Vector3.MoveTowards(transform.position, playerPosition, movementSpeed * Time.deltaTime);

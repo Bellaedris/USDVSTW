@@ -4,17 +4,35 @@ using usd.Enemies.Projectiles;
 
 namespace usd.Enemies
 {
+    /// <summary>
+    /// Represents a flyer enemy that moves in a sinusoidal pattern and shoots projectiles.
+    /// </summary>
     public class Flyer : BasicEnemy
     {
-        // The height of the wave
-        public float amplitude; // Height of the sinusoidal wave
-        public float frequency; // Speed of the sinusoidal wave
-        
-        private Vector3 moveDirection; // Direction towards the target (player)
-        private Vector3 perpendicularDirection; // Perpendicular axis for sinusoidal motion
+        /// <summary>
+        /// The height of the sinusoidal wave
+        /// </summary>
+        public float amplitude;
 
+        /// <summary>
+        /// The speed of the sinusoidal wave
+        /// </summary>
+        public float frequency;
+        
+        /// <summary>
+        /// Direction towards the target (Player)
+        /// </summary>
+        private Vector3 moveDirection;
+
+        /// <summary>
+        /// Perpendicular axis for sinusoidal motion
+        /// </summary>
+        private Vector3 perpendicularDirection;
+        
         void Start()
         {
+            // Initializes the flyer enemy, setting its difficulty and initial state
+            
             timeLastShot = 0.0f;
             player = GameObject.Find("player");
 
@@ -37,9 +55,11 @@ namespace usd.Enemies
             if (_uiManager != null)
                 _uiManager.gameOver += OnGameOver;
         }
-
+        
         void Update()
         {
+            // Updates the flyer enemy's state, moving in a sinusoidal pattern and shooting if possible
+            
             if (_isGameOver)
                 return;
             
@@ -48,10 +68,11 @@ namespace usd.Enemies
 
             // Move towards player
             Move();
+            
             // Look at direction
             RotateEntityTowardsDirection(180.0f, 90.0f, moveDirection);
 
-            // // Shoot if possible
+            // Shoot if possible
             if (!(transform.position.x > shootLimits.x && transform.position.x < -shootLimits.x && transform.position.y > shootLimits.y && transform.position.y < -shootLimits.y) 
                 && CanShoot())
             {
@@ -59,11 +80,14 @@ namespace usd.Enemies
             }
             else if (!limits.Contains(transform.position))
             {
-                // Destroy(gameObject);
+                // Recalculate direction if out of bounds
                 CalculateDirection();
             }
         }
         
+        /// <summary>
+        /// Calculates the direction towards the player and the perpendicular direction for sinusoidal motion.
+        /// </summary>
         private void CalculateDirection()
         {
             Vector3 directionToPlayer = player.transform.position - transform.position;
@@ -73,7 +97,11 @@ namespace usd.Enemies
             // Calculate the perpendicular direction for sinusoidal oscillation
             perpendicularDirection = Vector3.Cross(moveDirection, Vector3.forward).normalized;
         }
-        // Specific Methods
+
+        /// <summary>
+        /// Determines whether the flyer enemy can shoot.
+        /// </summary>
+        /// <returns>True if the flyer enemy can shoot, otherwise false.</returns>
         public override bool CanShoot()
         {
             if (timeLastShot >= 1.0f / fireRate)
@@ -85,9 +113,12 @@ namespace usd.Enemies
             return false;
         }
 
+        /// <summary>
+        /// Causes the flyer enemy to shoot projectiles towards the player.
+        /// </summary>
         public override void Shoot()
         {
-            //Todo maybe remove fireLine for basic nmy
+            // Todo maybe remove fireLine for basic enemy
             if (fireLineSize > 0 && fireProjectilesCount > 1)
             {
                 Vector3 fireDirection = playerPosition - transform.position;
@@ -123,9 +154,11 @@ namespace usd.Enemies
             }
         }
 
+        /// <summary>
+        /// Moves the flyer enemy towards the player with sinusoidal oscillation.
+        /// </summary>
         public override void Move()
         {
-            // Debug.Log(transform.position);
             // Forward movement in the X-Y plane
             Vector3 forwardMovement = moveDirection * movementSpeed * Time.deltaTime;
 
@@ -140,7 +173,6 @@ namespace usd.Enemies
             newPosition.z = 0.0f;
             // Apply the new position
             transform.position = newPosition;
-            // Debug.Log(transform.position);
         }
     }
 }

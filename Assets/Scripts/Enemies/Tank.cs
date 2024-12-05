@@ -1,14 +1,18 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UIElements;
 using usd.Enemies.Projectiles;
 
 namespace usd.Enemies
 {
+    /// <summary>
+    /// Represents a tank enemy that moves towards the player and shoots projectiles.
+    /// </summary>
     public class Tank : BasicEnemy
     {
         void Start()
         {
+            // Initializes the tank enemy, setting its difficulty and initial state
+
             timeLastShot = 0.0f;
             player = GameObject.Find("player");
             playerPosition = player.transform.position;
@@ -33,6 +37,8 @@ namespace usd.Enemies
         
         void Update()
         {
+            // Updates the tank enemy's state, moving towards the player and shooting if possible
+
             if (_isGameOver)
                 return;
             
@@ -44,19 +50,18 @@ namespace usd.Enemies
             // Look at player
             RotateEntityTowardsPlayer(180.0f, 90.0f);
             
-            // // Shoot if possible
+            // Shoot if possible
             if (!(transform.position.x > shootLimits.x && transform.position.x < -shootLimits.x && transform.position.y > shootLimits.y && transform.position.y < -shootLimits.y) 
                 && CanShoot())
             {
                 Shoot();
             }
-            // else if (!limits.Contains(transform.position))
-            // {
-            //     Destroy(gameObject);
-            // }
         }
         
-        // Specific Methods
+        /// <summary>
+        /// Determines whether the tank enemy can shoot.
+        /// </summary>
+        /// <returns>True if the tank enemy can shoot, otherwise false.</returns>
         public override bool CanShoot()
         {
             if (timeLastShot >= 1.0f/fireRate)
@@ -68,9 +73,12 @@ namespace usd.Enemies
             return false;
         }
         
+        /// <summary>
+        /// Causes the tank enemy to shoot projectiles towards the player.
+        /// </summary>
         public override void Shoot()
         {   
-            //Todo maybe remove fireLine for basic nmy
+            // Todo maybe remove fireLine for basic enemy
             if (fireLineSize > 0 && fireProjectilesCount > 1)
             {
                 Vector3 fireDirection = playerPosition - transform.position;
@@ -106,6 +114,9 @@ namespace usd.Enemies
             }
         }
 
+        /// <summary>
+        /// Moves the tank enemy towards the player.
+        /// </summary>
         public override void Move()
         {
             Vector3 newPosition = Vector3.MoveTowards(transform.position, playerPosition, movementSpeed * Time.deltaTime);
