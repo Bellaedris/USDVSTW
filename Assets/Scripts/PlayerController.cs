@@ -76,7 +76,6 @@ namespace usd
                     Destroy(gameObject);
                     Instantiate(deathParticles, transform.position, Quaternion.identity);
                     AudioManager.Instance.playGeneralSound(deathSound);
-                    Debug.Log("Game Over");
                 }
                 else
                 {

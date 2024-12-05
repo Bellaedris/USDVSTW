@@ -107,16 +107,22 @@ namespace usd
                 return;
             if (maxWeaponLevel == 0)
             {
+                // Kill all other coroutines of the same type
+                StopAllCoroutines();
                 StartCoroutine(crossFade(_bgm[_playingBgm], _bgm[3], 2f));
                 _playingBgm = 3;
             }
             else if (level == 5 && _playingBgm != 4)
             {
+                // Kill all other coroutines of the same type
+                StopAllCoroutines();
                 StartCoroutine(crossFade(_bgm[_playingBgm], _bgm[4], 2f));
                 _playingBgm = 4;
             }
             else if (!(level == 5 && _playingBgm == 4))
             {
+                // Kill all other coroutines of the same type
+                StopAllCoroutines();
                 StartCoroutine(crossFade(_bgm[_playingBgm], _bgm[newWeaponID], 2f));
                 _playingBgm = newWeaponID;
             }
@@ -125,6 +131,7 @@ namespace usd
 
         private IEnumerator crossFade(AudioSource from, AudioSource to, float fadeTime)
         {
+            // Kills all other music
             foreach (AudioSource source in _bgm)
             {
                 if (source != from && source != to)
@@ -146,6 +153,8 @@ namespace usd
         
         public void FadeInMusicMenu()
         {
+            // Kill all other coroutines of the same type
+            StopAllCoroutines();
             StartCoroutine(crossFadeMenu(_bgm[_playingBgm], _bgm[5], 1f));
             _lastBgm = _playingBgm;
             _playingBgm = 5;
@@ -153,12 +162,15 @@ namespace usd
         
         public void FadeOutMusicMenu()
         {
+            // Kill all other coroutines of the same type
+            StopAllCoroutines();
             StartCoroutine(crossFadeMenu(_bgm[5], _bgm[_lastBgm], 1f));
             _playingBgm = _lastBgm;
         }
         
         private IEnumerator crossFadeMenu(AudioSource from, AudioSource to, float fadeTime)
         {
+            // Kills all other music
             foreach (AudioSource source in _bgm)
             {
                 if (source != from && source != to)
@@ -180,12 +192,16 @@ namespace usd
         
         public void FadeMusicMax()
         {
+            // Kill all other coroutines of the same type
+            StopAllCoroutines();
             StartCoroutine(crossFadeMenu(_bgm[_playingBgm], _bgm[4], 2f));
             _playingBgm = 4;
         }
         
         public void FadeMusicBase()
         {
+            // Kill all other coroutines of the same type
+            StopAllCoroutines();
             StartCoroutine(crossFadeMenu(_bgm[_playingBgm], _bgm[3], 2f));
             _playingBgm = 3;
         }
