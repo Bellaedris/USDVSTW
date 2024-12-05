@@ -151,7 +151,7 @@ MonoBehaviour:
   - {fileID: 6585106654912148602, guid: 72044a27c2e07a54888e414b4e67bd69, type: 3}
   - {fileID: 6585106654912148602, guid: 6e37bc134b9592446b27ebf7f64fbcd2, type: 3}
   dropRate:
-  - 0.4
+  - 0.3
   - 0.2
   - 0.2
   deathParticles: {fileID: 2377741972714469437, guid: 8208f7fc7b941c84283e982272bc7fe5,

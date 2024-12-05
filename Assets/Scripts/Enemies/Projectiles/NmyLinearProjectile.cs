@@ -17,7 +17,7 @@ namespace usd.Enemies.Projectiles
         
         private Camera _mainCamera;
         private Vector3 moveDirection;
-        private bool hasReachedTarget = false;
+        // private bool hasReachedTarget = false;
         private Bounds limits;
         
         void Start()
@@ -42,19 +42,19 @@ namespace usd.Enemies.Projectiles
         
         private void MoveTowardsTarget()
         {
-            if (!hasReachedTarget)
-            {
-                // Check if the object is near the target
-                if (Vector3.Distance(transform.position, target) <= tolerance)
-                {
-                    hasReachedTarget = true; 
-                }
-                else
-                {
-                    // Move towards the target
-                    moveDirection = (target - transform.position).normalized;
-                }
-            }
+            // if (!hasReachedTarget)
+            // {
+            //     // Check if the object is near the target
+            //     if (Vector3.Distance(transform.position, target) <= tolerance)
+            //     {
+            //         hasReachedTarget = true; 
+            //     }
+            //     else
+            //     {
+            //         // Move towards the target
+            //         moveDirection = (target - transform.position).normalized;
+            //     }
+            // }
 
             // Move in the current direction
             transform.position += moveDirection * speed * Time.deltaTime;

@@ -53,12 +53,12 @@ PrefabInstance:
     - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
         type: 3}
       propertyPath: dropRate.Array.data[0]
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
         type: 3}
       propertyPath: dropRate.Array.data[1]
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2230645044392448912, guid: 608fbf73fabeb1142b4968b6db06af27,
         type: 3}
