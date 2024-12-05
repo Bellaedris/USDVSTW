@@ -21,11 +21,13 @@ namespace usd.UI
         public static void LoadGameScene()
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+            // Time.timeScale = UIManager.Instance._GetTimeScale();
         }
 
         public static void LoadMainMenuScene()
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            AudioManager.Instance.FadeMusicMax();
         }
 
         public static void QuitGame()

@@ -21,6 +21,7 @@ namespace usd
         // and we don't have fmod or wwise
         private AudioSource[] _bgm; // holds music for laser/gatling/blackHole/criticalHP/maxHP
         private int _playingBgm;
+        private int _lastBgm;
         
         void Awake()
         {
@@ -34,6 +35,7 @@ namespace usd
                 Destroy(gameObject);
 
             var sources = GetComponents<AudioSource>();
+            Debug.Log(sources.Length);
             _playerSource = sources[0];
             _enemiesSource = sources[1];
 
@@ -131,11 +133,43 @@ namespace usd
                 elapsed += Time.deltaTime;
                 from.volume = Mathf.Lerp(.6f, 0f, elapsed / fadeTime);
                 to.volume = Mathf.Lerp(0f, .6f, elapsed / fadeTime);
-                
                 yield return null;
             }
 
             yield return null;
+        }
+        
+        public void FadeInMusicMenu()
+        {
+            StartCoroutine(crossFadeMenu(_bgm[_playingBgm], _bgm[5], 2f));
+            _lastBgm = _playingBgm;
+            _playingBgm = 5;
+        }
+        
+        public void FadeOutMusicMenu()
+        {
+            StartCoroutine(crossFadeMenu(_bgm[5], _bgm[_lastBgm], 2f));
+            _playingBgm = _lastBgm;
+        }
+        
+        private IEnumerator crossFadeMenu(AudioSource from, AudioSource to, float fadeTime)
+        {
+            // linearly interpolate volume in and out
+            float elapsed = 0f;
+            while (elapsed < fadeTime)
+            {
+                elapsed += 1.0f/60.0f;
+                from.volume = Mathf.Lerp(.6f, 0f, elapsed / fadeTime);
+                to.volume = Mathf.Lerp(0f, .6f, elapsed / fadeTime);
+                yield return null;
+            }
+
+            yield return null;
+        }
+        
+        public void FadeMusicMax()
+        {
+            StartCoroutine(crossFadeMenu(_bgm[_playingBgm], _bgm[4], 2f));
         }
     }
 }
