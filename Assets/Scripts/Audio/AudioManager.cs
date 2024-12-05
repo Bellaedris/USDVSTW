@@ -35,7 +35,6 @@ namespace usd
                 Destroy(gameObject);
 
             var sources = GetComponents<AudioSource>();
-            Debug.Log(sources.Length);
             _playerSource = sources[0];
             _enemiesSource = sources[1];
 
@@ -141,14 +140,14 @@ namespace usd
         
         public void FadeInMusicMenu()
         {
-            StartCoroutine(crossFadeMenu(_bgm[_playingBgm], _bgm[5], 2f));
+            StartCoroutine(crossFadeMenu(_bgm[_playingBgm], _bgm[5], 1f));
             _lastBgm = _playingBgm;
             _playingBgm = 5;
         }
         
         public void FadeOutMusicMenu()
         {
-            StartCoroutine(crossFadeMenu(_bgm[5], _bgm[_lastBgm], 2f));
+            StartCoroutine(crossFadeMenu(_bgm[5], _bgm[_lastBgm], 1f));
             _playingBgm = _lastBgm;
         }
         
@@ -170,6 +169,13 @@ namespace usd
         public void FadeMusicMax()
         {
             StartCoroutine(crossFadeMenu(_bgm[_playingBgm], _bgm[4], 2f));
+            _playingBgm = 4;
+        }
+        
+        public void FadeMusicBase()
+        {
+            StartCoroutine(crossFadeMenu(_bgm[_playingBgm], _bgm[3], 2f));
+            _playingBgm = 3;
         }
     }
 }

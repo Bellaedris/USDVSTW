@@ -6,9 +6,8 @@ namespace usd.UI
     public class SceneLoader : MonoBehaviour
     {
         private static SceneLoader _instance;
-        
         public SceneLoader Instance => _instance;
-        
+
         private void Awake()
         {
             //singleton 
@@ -21,7 +20,8 @@ namespace usd.UI
         public static void LoadGameScene()
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(1);
-            // Time.timeScale = UIManager.Instance._GetTimeScale();
+            Time.timeScale = 1.0f;
+            AudioManager.Instance.FadeMusicBase();
         }
 
         public static void LoadMainMenuScene()

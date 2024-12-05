@@ -123,7 +123,6 @@ namespace usd
             // we set the time scale to zero to fake pause the game
             if (!_isPaused)
             {
-                Debug.Log("PAUSE !");
                 AudioManager.Instance.FadeInMusicMenu();
                 Time.timeScale = 0;
             }
